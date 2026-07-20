@@ -24,7 +24,12 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T1.2 — Whisper STT adapter
+Branch: `stage-1/t1.2-whisper-adapter`
+Sub-steps:
+- [ ] 1. Install `faster-whisper` dependency in `melissa-service`.
+- [ ] 2. Implement `WhisperSTTAdapter` in `app/adapters/stt/whisper.py`.
+- [ ] 3. Write unit tests to transcribe a real audio file using the tiny model.
 
 ---
 
