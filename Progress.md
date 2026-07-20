@@ -24,7 +24,12 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T3.5 — Gemini adapter
+Branch: `stage-3/t3.5-gemini-adapter`
+Sub-steps:
+- [ ] 1. Add `google-genai` dependency.
+- [ ] 2. Create `app/adapters/llm/gemini_adapter.py`.
+- [ ] 3. Create `tests/adapters/llm/test_gemini.py`.
 
 ---
 
