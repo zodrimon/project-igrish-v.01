@@ -313,7 +313,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: state a goal in one session; in a distinct later session (restart the service to prove it's not just in-memory), ask "what was I working on" and get a correct answer.
   Commit: `feat: wire memory context aggregator into conversation loop`
 
-- [ ] **T5.7 — Memory purge action**
+- [x] **T5.7 — Memory purge action**
   Branch: `stage-5/t5.7-memory-purge`
   Do: Add a settings action that clears both structured and semantic stores on user request.
   Dependencies: T5.1, T5.2.

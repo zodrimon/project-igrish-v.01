@@ -24,17 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T5.7 — Memory purge action
-Branch: `stage-5/t5.7-memory-purge`
-Sub-steps:
-- [x] 1. Add `DELETE /api/memory` endpoint to `app/main.py`.
-- [x] 2. Implement logic to clear SQL and semantic stores.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T5.7 — Memory purge action — COMPLETE
+Branch: stage-5/t5.7-memory-purge (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Added DELETE /api/memory to purge all structured and semantic stores.
+```
 
 ```
 ### T5.6 — Wire aggregator into the live conversation loop — COMPLETE
