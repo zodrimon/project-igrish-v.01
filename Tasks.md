@@ -194,7 +194,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: live smoke test — a real prompt returns a real completion; unit test with recorded/mocked HTTP response covers parsing.
   Commit: `feat: add openai LLM adapter`
 
-- [ ] **T3.4 — Claude adapter**
+- [x] **T3.4 — Claude adapter**
   Branch: `stage-3/t3.4-claude-adapter`
   Do: Implement `adapters/llm/claude.py` implementing `LLMProvider`.
   Dependencies: T3.1, T3.2.
