@@ -24,7 +24,12 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T5.4 — Fact extraction step
+Branch: `stage-5/t5.4-fact-extraction`
+Sub-steps:
+- [ ] 1. Create `app/core/fact_extractor.py`.
+- [ ] 2. Integrate into `voice.py` asynchronously.
+- [ ] 3. Create tests for fact extraction.
 
 ---
 
