@@ -24,7 +24,11 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T3.8 — Full voice loop integration
+Branch: `stage-3/t3.8-voice-loop-llm`
+Sub-steps:
+- [ ] 1. Update `app/api/voice.py` to use `LLMProvider`.
+- [ ] 2. Test full loop.
 
 ---
 
