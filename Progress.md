@@ -24,7 +24,11 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T1.5 — Loopback wiring (STT → TTS, no LLM)
+Branch: `stage-1/t1.5-loopback`
+Sub-steps:
+- [ ] 1. Update FastAPI endpoint to run Whisper STT -> Piper TTS.
+- [ ] 2. Update React app to receive the synthesized audio and play it.
 
 ---
 
