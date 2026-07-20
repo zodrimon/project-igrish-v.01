@@ -27,8 +27,8 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T5.3 (cont) — Verbatim turn write path
 Branch: `stage-5/t5.3-turn-write-path`
 Sub-steps:
-- [ ] 1. Update `voice.py` to persist turns to SQL database.
-- [ ] 2. Ensure current session / conversation id is mapped.
+- [x] 1. Update `voice.py` to persist turns to SQL database.
+- [x] 2. Ensure current session / conversation id is mapped.
 
 ---
 

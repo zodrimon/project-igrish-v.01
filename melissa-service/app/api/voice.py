@@ -58,13 +58,25 @@ async def stream_audio(audio: UploadFile = File(...)):
     from app.core.streaming import chunk_sentences
     from app.core.session import global_session_manager
     from app.memory.store_semantic import global_semantic_store
+    from app.core.db import SessionLocal
+    from app.models import Turn
     from fastapi.responses import StreamingResponse
     import uuid
     
-    global_session_manager.ping()
+    await global_session_manager.ping()
     
     llm_provider = get_llm_provider()
     history = global_conversation_buffer.get_history()
+    
+    # Store the user's turn in SQL asynchronously
+    async def _store_user_turn_sql():
+        conv_id = global_session_manager.active_conversation_id
+        if conv_id:
+            async with SessionLocal() as db:
+                turn = Turn(conversation_id=conv_id, role="user", content=text)
+                db.add(turn)
+                await db.commit()
+    asyncio.create_task(_store_user_turn_sql())
     
     # Query semantic memory for relevant context
     def _query_semantic():
@@ -97,6 +109,16 @@ async def stream_audio(audio: UploadFile = File(...)):
         asyncio.create_task(asyncio.to_thread(
             global_semantic_store.store_turn, melissa_turn_id, joined_text, {"role": "melissa"}
         ))
+        
+        # Store Melissa's turn in SQL asynchronously
+        async def _store_melissa_turn_sql():
+            conv_id = global_session_manager.active_conversation_id
+            if conv_id:
+                async with SessionLocal() as db:
+                    turn = Turn(conversation_id=conv_id, role="melissa", content=joined_text)
+                    db.add(turn)
+                    await db.commit()
+        asyncio.create_task(_store_melissa_turn_sql())
         
     audio_stream = tts_adapter.synthesize_stream(wrapped_sentence_stream())
     
