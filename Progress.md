@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T4.3 — Session lifecycle
-Branch: `stage-4/t4.3-session-lifecycle`
-Sub-steps:
-- [x] 1. Create `app/core/session.py`.
-- [x] 2. Update `voice.py` and `conversation.py` to use sessions.
-- [x] 3. Create tests.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T4.3 — Session lifecycle — COMPLETE
+Branch: stage-4/t4.3-session-lifecycle (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: Added conversation session lifecycle with inactivity timeout.
+```
 
 ```
 ### T4.2 — Sentence-level streaming TTS — COMPLETE
