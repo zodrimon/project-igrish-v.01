@@ -278,7 +278,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: migration runs cleanly on a fresh DB; unit tests for basic CRUD on each table.
   Commit: `feat: add structured memory schema and migrations`
 
-- [ ] **T5.2 — Semantic memory store**
+- [x] **T5.2 — Semantic memory store**
   Branch: `stage-5/t5.2-semantic-store`
   Do: Set up a ChromaDB collection (`memory_semantic`) with an embedding pipeline; implement `memory/store_semantic.py` for write/query.
   Dependencies: T0.2.
