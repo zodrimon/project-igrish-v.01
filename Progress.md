@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T3.5 — Gemini adapter
-Branch: `stage-3/t3.5-gemini-adapter`
-Sub-steps:
-- [x] 1. Add `google-genai` dependency.
-- [x] 2. Create `app/adapters/llm/gemini_adapter.py`.
-- [x] 3. Create `tests/adapters/llm/test_gemini.py`.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T3.5 — Gemini adapter — COMPLETE
+Branch: stage-3/t3.5-gemini-adapter (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: Added Gemini LLM provider implementation.
+```
 
 ```
 ### T3.4 — Claude adapter — COMPLETE
