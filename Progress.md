@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T0.2 — Python service skeleton
-Branch: `stage-0/t0.2-python-skeleton`
-Sub-steps:
-- [x] 1. Create `melissa-service/pyproject.toml` with FastAPI and dev dependencies.
-- [x] 2. Create `melissa-service/app/main.py` with GET `/health` endpoint.
-- [x] 3. Test running `uvicorn` and verifying the health endpoint.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T0.2 — Python service skeleton — COMPLETE
+Branch: stage-0/t0.2-python-skeleton (merged)
+Sub-steps: all 3 ticked, all pushed, PR merged.
+Notes: none.
+```
 
 ```
 ### T0.1 — Repo scaffold — COMPLETE
