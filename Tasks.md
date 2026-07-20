@@ -250,7 +250,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: measure/log "time to first audio" before/after — confirm a meaningful reduction vs. non-streamed baseline; manual listen-through confirms no audible choppiness.
   Commit: `feat: add sentence-level streaming TTS`
 
-- [ ] **T4.3 — Session lifecycle**
+- [x] **T4.3 — Session lifecycle**
   Branch: `stage-4/t4.3-session-lifecycle`
   Do: Implement `core/session.py`: a conversation session starts on wake, ends after a configurable silence timeout.
   Dependencies: T4.1.
