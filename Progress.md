@@ -27,7 +27,7 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T0.3 — Tauri shell skeleton
 Branch: `stage-0/t0.3-tauri-skeleton`
 Sub-steps:
-- [ ] 1. Install `pnpm` globally.
+- [x] 1. Install `pnpm` globally.
 - [ ] 2. Scaffold Tauri + React app in a temporary folder and move contents to `companion-app/`.
 - [ ] 3. Install dependencies in `companion-app/` using `pnpm`.
 - [ ] 4. Test running `pnpm tauri dev` (ensure it builds and starts).
