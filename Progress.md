@@ -24,17 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T2.3 — Listening UX cue
-Branch: `stage-2/t2.3-listening-cue`
-Sub-steps:
-- [x] 1. Add visual pulse animation in `App.css`.
-- [x] 2. Apply animation in `App.tsx` when recording is active.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T2.3 — Listening UX cue — COMPLETE
+Branch: stage-2/t2.3-listening-cue (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Added visual pulsing animation during audio capture.
+```
 
 ```
 ### T2.2 — Gate STT behind wake event — COMPLETE
