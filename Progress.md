@@ -24,17 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T3.8 — Full voice loop integration
-Branch: `stage-3/t3.8-voice-loop-llm`
-Sub-steps:
-- [x] 1. Update `app/api/voice.py` to use `LLMProvider`.
-- [x] 2. Test full loop.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T3.8 — Full voice loop integration — COMPLETE
+Branch: stage-3/t3.8-voice-loop-llm (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Integrated STT -> LLM -> TTS in the backend voice stream endpoint.
+```
 
 ```
 ### T3.7 — Provider selector setting — COMPLETE
