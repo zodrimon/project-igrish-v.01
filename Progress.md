@@ -24,7 +24,11 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T4.2 — Sentence-level streaming TTS
+Branch: `stage-4/t4.2-streaming-tts`
+Sub-steps:
+- [ ] 1. Add sentence chunker utility.
+- [ ] 2. Update `TTSProvider` and `voice.py` to stream audio.
 
 ---
 
