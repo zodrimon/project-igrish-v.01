@@ -24,7 +24,11 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T6.5 — Input activity sensor
+Branch: `stage-6/t6.5-input-activity-sensor`
+Sub-steps:
+- [ ] 1. Create `app/adapters/sensors/input_activity.py`.
+- [ ] 2. Create tests.
 
 ---
 
