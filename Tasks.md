@@ -68,7 +68,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: `uvicorn app.main:app` runs; `curl localhost:8000/health` returns 200 and the expected body.
   Commit: `feat: add melissa-service skeleton with health endpoint`
 
-- [ ] **T0.3 — Tauri shell skeleton**
+- [~] **T0.3 — Tauri shell skeleton**
   Branch: `stage-0/t0.3-tauri-skeleton`
   Do: Scaffold a blank Tauri + React app in `companion-app/` (default template is fine — no custom UI yet).
   Dependencies: T0.1.
