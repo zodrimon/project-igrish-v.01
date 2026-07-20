@@ -1,0 +1,21 @@
+[project]
+name = "melissa-service"
+version = "0.1.0"
+description = "Melissa Service - FastAPI Brain"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+    "black",
+    "mypy",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
