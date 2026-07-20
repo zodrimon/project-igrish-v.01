@@ -54,9 +54,11 @@ async def stream_audio(audio: UploadFile = File(...)):
         
     from app.core.llm_registry import get_llm_provider
     from app.core.prompt_builder import build_prompt
+    from app.core.conversation import global_conversation_buffer
     
     llm_provider = get_llm_provider()
-    messages = build_prompt(text)
+    history = global_conversation_buffer.get_history()
+    messages = build_prompt(text, conversation_history=history)
     
     llm_response_chunks = []
     async for chunk in llm_provider.generate(messages, stream=False):
@@ -64,6 +66,8 @@ async def stream_audio(audio: UploadFile = File(...)):
         
     llm_text = "".join(llm_response_chunks)
     logger.info(f"LLM Response: '{llm_text}'")
+    
+    global_conversation_buffer.add_turn(text, llm_text)
         
     audio_bytes = await tts_adapter.synthesize(llm_text)
     logger.info(f"Synthesized audio: {len(audio_bytes)} bytes")
