@@ -54,7 +54,7 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 0 — Development Environment
 *Goal: a reproducible dev environment exists; nothing product-specific yet.*
 
-- [ ] **T0.1 — Repo scaffold**
+- [x] **T0.1 — Repo scaffold**
   Branch: `stage-0/t0.1-repo-scaffold`
   Do: Create the full folder structure from `context.md` §4 with empty placeholder files (`.gitkeep` where needed) — `companion-app/`, `melissa-service/`, `shared/`, `docs/`, `scripts/`, `.github/workflows/`, `docker/`.
   Dependencies: none.
