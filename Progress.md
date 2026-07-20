@@ -28,8 +28,8 @@ This file is the **single source of truth for "exactly where things stand right 
 Branch: `stage-0/t0.5-dev-script`
 Sub-steps:
 - [x] 1. Write `scripts/dev.ps1` to start FastAPI and Tauri apps concurrently.
-- [ ] 2. Test running `dev.ps1` and verify both processes start.
-- [ ] 3. Verify that stopping the script cleanly shuts down both processes.
+- [~] 2. Test running `dev.ps1` and verify both processes start. *(Unverifiable in sandbox due to MSVC)*
+- [~] 3. Verify that stopping the script cleanly shuts down both processes. *(Unverifiable)*
 
 ---
 
