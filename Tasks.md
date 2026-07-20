@@ -110,7 +110,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test with a short pre-recorded sample audio file transcribes to the expected text within reasonable tolerance.
   Commit: `feat: add whisper STT adapter`
 
-- [ ] **T1.3 — Piper TTS adapter**
+- [x] **T1.3 — Piper TTS adapter**
   Branch: `stage-1/t1.3-piper-adapter`
   Do: Implement `adapters/tts/piper.py` implementing `TTSProvider`.
   Dependencies: T1.1.
