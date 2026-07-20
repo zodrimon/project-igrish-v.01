@@ -117,7 +117,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test synthesizes a short known string and confirms non-empty, valid audio output.
   Commit: `feat: add piper TTS adapter`
 
-- [ ] **T1.4 — Push-to-talk hotkey in shell**
+- [x] **T1.4 — Push-to-talk hotkey in shell**
   Branch: `stage-1/t1.4-push-to-talk`
   Do: Add a global hotkey in the Tauri shell that starts/stops microphone capture and streams captured audio to the Melissa Service over a new endpoint.
   Dependencies: T0.3, T0.5.
