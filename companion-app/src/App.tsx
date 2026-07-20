@@ -1,49 +1,89 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
+import { useState, useEffect, useRef } from "react";
+import { register } from "@tauri-apps/plugin-global-shortcut";
 import "./App.css";
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
+  const [isRecording, setIsRecording] = useState(false);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
-  }
+  const startRecording = async () => {
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") return;
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mediaRecorder = new MediaRecorder(stream);
+      mediaRecorderRef.current = mediaRecorder;
+
+      mediaRecorder.ondataavailable = async (e) => {
+        if (e.data.size > 0) {
+          const formData = new FormData();
+          formData.append("audio", e.data, "chunk.webm");
+          try {
+            await fetch("http://127.0.0.1:8000/api/v1/voice/stream", {
+              method: "POST",
+              body: formData,
+            });
+            console.log("Audio chunk sent to server.");
+          } catch (err) {
+            console.error("Error sending audio chunk:", err);
+          }
+        }
+      };
+
+      mediaRecorder.start();
+      setIsRecording(true);
+    } catch (err) {
+      console.error("Failed to get user media", err);
+    }
+  };
+
+  const stopRecording = () => {
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
+      mediaRecorderRef.current.stop();
+      mediaRecorderRef.current.stream.getTracks().forEach((track) => track.stop());
+      setIsRecording(false);
+    }
+  };
+
+  useEffect(() => {
+    let isRegistered = false;
+    
+    async function setupShortcut() {
+      try {
+        await register("CommandOrControl+Shift+Space", (event) => {
+          console.log("Shortcut event:", event);
+          // @ts-ignore
+          if (event.state === "Pressed") {
+            startRecording();
+          // @ts-ignore
+          } else if (event.state === "Released") {
+            stopRecording();
+          } else {
+            // Toggle fallback if state is not provided
+            if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
+              stopRecording();
+            } else {
+              startRecording();
+            }
+          }
+        });
+        isRegistered = true;
+      } catch (e) {
+        console.error("Failed to register shortcut", e);
+      }
+    }
+    setupShortcut();
+  }, []);
 
   return (
     <main className="container">
-      <h1>Welcome to Tauri + React</h1>
-
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>Melissa Companion</h1>
+      <div style={{ marginTop: "2rem" }}>
+        <p>Status: <strong style={{ color: isRecording ? "red" : "green" }}>{isRecording ? "Listening..." : "Idle"}</strong></p>
+        <p>Hold <code>Ctrl+Shift+Space</code> to talk, or click the button below.</p>
+        <button onMouseDown={startRecording} onMouseUp={stopRecording} onMouseLeave={stopRecording}>
+          Push to Talk
+        </button>
       </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
     </main>
   );
 }
