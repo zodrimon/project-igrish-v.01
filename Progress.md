@@ -27,9 +27,9 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T6.3 — Wire snapshot into system prompt
 Branch: `stage-6/t6.3-prompt-integration`
 Sub-steps:
-- [ ] 1. Start snapshot in `app/main.py`.
-- [ ] 2. Update `app/memory/context_aggregator.py` to include snapshot state.
-- [ ] 3. Create tests.
+- [x] 1. Start snapshot in `app/main.py`.
+- [x] 2. Update `app/memory/context_aggregator.py` to include snapshot state.
+- [x] 3. Create tests.
 
 ---
 

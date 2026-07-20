@@ -9,6 +9,8 @@ import asyncio
 from contextlib import asynccontextmanager
 from app.adapters.sensors.wake_word import WakeWordSensor
 from app.api.voice import wake_word_event_queue
+from app.core.context_snapshot import global_context_snapshot
+from app.adapters.sensors.active_window import ActiveWindowSensor
 
 def on_wake_detected():
     # Push to queue (needs to be thread-safe since WakeWordSensor runs in a thread)
@@ -19,9 +21,14 @@ wake_sensor = WakeWordSensor(on_wake=on_wake_detected)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # Initialize snapshot
+    global_context_snapshot.register_sensor(ActiveWindowSensor())
+    global_context_snapshot.start(interval_seconds=2.0)
+    
     wake_sensor.start()
     yield
     wake_sensor.stop()
+    global_context_snapshot.stop()
 
 app = FastAPI(title="Melissa Service", version="0.1.0", lifespan=lifespan)
 

@@ -25,3 +25,23 @@ async def test_structured_context(monkeypatch):
     context = await _get_structured_context()
     assert len(context) > 0
     assert "Finish AD lab tonight" in context[0]
+
+@pytest.mark.asyncio
+async def test_build_augmented_prompt_with_snapshot(monkeypatch):
+    from app.core.context_snapshot import global_context_snapshot
+    from app.ports.sensor import ContextSensor
+    
+    class FakeSensor(ContextSensor):
+        @property
+        def name(self): return "active_window"
+        def get_current_state(self): return {"title": "VS Code", "process": "Code.exe"}
+        
+    global_context_snapshot._sensors.clear()
+    global_context_snapshot.register_sensor(FakeSensor())
+    global_context_snapshot._update_snapshot()
+    
+    messages = await build_augmented_prompt("hello")
+    # System prompt is the first message
+    system_msg = messages[0]["content"]
+    assert "Real-Time Context Snapshot:" in system_msg
+    assert "[active_window]: {'title': 'VS Code', 'process': 'Code.exe'}" in system_msg

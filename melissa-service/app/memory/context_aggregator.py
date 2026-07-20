@@ -50,11 +50,30 @@ async def build_augmented_prompt(user_text: str) -> List[Dict[str, Any]]:
         _get_structured_context()
     )
     
-    # 2. Combine all context
-    all_context = structured_memories + semantic_memories
-    
     # 3. Get recent conversation history
     history = global_conversation_buffer.get_history()
     
-    # 4. Build prompt
-    return build_prompt(user_text, conversation_history=history, relevant_memories=all_context)
+    # Combine into single context block
+    context_text = "Structured Context:\n"
+    if structured_memories:
+        for item in structured_memories:
+            context_text += f"- {item}\n"
+    else:
+        context_text += "None\n"
+        
+    context_text += "\nSemantic Context:\n"
+    if semantic_memories:
+        for mem in semantic_memories:
+            context_text += f"- {mem}\n"
+    else:
+        context_text += "None\n"
+        
+    from app.core.context_snapshot import global_context_snapshot
+    snapshot_state = global_context_snapshot.get_state()
+    if snapshot_state:
+        context_text += "\nReal-Time Context Snapshot:\n"
+        for sensor_name, state in snapshot_state.items():
+            context_text += f"[{sensor_name}]: {state}\n"
+    
+    # Delegate to build_prompt
+    return build_prompt(user_text, conversation_history=history, relevant_memories=[context_text])
