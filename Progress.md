@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T5.2 — Semantic memory store
-Branch: `stage-5/t5.2-semantic-store`
-Sub-steps:
-- [x] 1. Add `chromadb` dependency.
-- [x] 2. Create `app/memory/store_semantic.py`.
-- [x] 3. Create `tests/memory/test_semantic.py`.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T5.2 — Semantic memory store — COMPLETE
+Branch: stage-5/t5.2-semantic-store (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: Added ChromaDB-backed semantic memory store and tests.
+```
 
 ```
 ### T5.1 — Structured schema + migrations — COMPLETE
