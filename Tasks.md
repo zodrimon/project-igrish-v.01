@@ -138,7 +138,7 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 2 — Wake Word
 *Goal: replace push-to-talk with always-listening "Hey Melissa" / "Melissa" detection.*
 
-- [ ] **T2.1 — Wake word engine integration**
+- [x] **T2.1 — Wake word engine integration**
   Branch: `stage-2/t2.1-wake-word-sensor`
   Do: Integrate a lightweight local keyword-spotting model as `adapters/sensors/wake_word.py`, running continuously with negligible CPU, emitting a detection event.
   Dependencies: T0.2.
