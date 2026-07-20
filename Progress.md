@@ -27,8 +27,8 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T6.2 — Active window sensor
 Branch: `stage-6/t6.2-active-window-sensor`
 Sub-steps:
-- [ ] 1. Create `app/adapters/sensors/active_window.py` using Win32 API.
-- [ ] 2. Create tests.
+- [x] 1. Create `app/adapters/sensors/active_window.py` using Win32 API.
+- [x] 2. Create tests.
 
 ---
 
