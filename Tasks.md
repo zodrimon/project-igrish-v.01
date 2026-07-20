@@ -103,7 +103,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit tests instantiate the fake adapters and confirm the interface contract via a round-trip of a known string.
   Commit: `feat: add STT/TTS provider interfaces with mock adapters`
 
-- [ ] **T1.2 — Whisper STT adapter**
+- [x] **T1.2 — Whisper STT adapter**
   Branch: `stage-1/t1.2-whisper-adapter`
   Do: Implement `adapters/stt/whisper.py` (faster-whisper or whisper.cpp binding) implementing `STTProvider`.
   Dependencies: T1.1.
