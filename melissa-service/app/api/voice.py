@@ -60,6 +60,7 @@ async def stream_audio(audio: UploadFile = File(...)):
     from app.core.db import SessionLocal
     from app.models import Turn
     from app.core.fact_extractor import extract_facts
+    from app.memory.context_aggregator import build_augmented_prompt
     from app.core.streaming import chunk_sentences
     from fastapi.responses import StreamingResponse
     import uuid
@@ -82,12 +83,7 @@ async def stream_audio(audio: UploadFile = File(...)):
     # Extract structured facts asynchronously
     asyncio.create_task(extract_facts(text))
     
-    # Query semantic memory for relevant context
-    def _query_semantic():
-        return global_semantic_store.query_memory(text, n_results=3)
-    relevant_memories = await asyncio.to_thread(_query_semantic)
-    
-    messages = build_prompt(text, conversation_history=history, relevant_memories=relevant_memories)
+    messages = await build_augmented_prompt(text)
     
     # Store the user's turn in semantic memory asynchronously
     user_turn_id = str(uuid.uuid4())
