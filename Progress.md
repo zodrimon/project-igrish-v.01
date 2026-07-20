@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T3.3 — OpenAI adapter
-Branch: `stage-3/t3.3-openai-adapter`
-Sub-steps:
-- [x] 1. Add `openai` dependency.
-- [x] 2. Create `app/adapters/llm/openai_adapter.py`.
-- [x] 3. Create `tests/adapters/llm/test_openai.py`.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T3.3 — OpenAI adapter — COMPLETE
+Branch: stage-3/t3.3-openai-adapter (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: Added OpenAI LLM provider implementation.
+```
 
 ```
 ### T3.2 — Secrets loader — COMPLETE
