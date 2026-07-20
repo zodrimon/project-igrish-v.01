@@ -24,7 +24,12 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T1.4 — Push-to-talk hotkey in shell
+Branch: `stage-1/t1.4-push-to-talk`
+Sub-steps:
+- [ ] 1. Add `/api/v1/voice/stream` endpoint in FastAPI.
+- [ ] 2. Install `@tauri-apps/plugin-global-shortcut` and configure Tauri backend.
+- [ ] 3. Update React app to capture microphone on hotkey and send audio to FastAPI.
 
 ---
 
