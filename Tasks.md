@@ -124,7 +124,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: holding the hotkey and speaking results in audio bytes arriving at the service (verify via a temporary debug log/endpoint).
   Commit: `feat: add push-to-talk capture in companion app`
 
-- [ ] **T1.5 — Loopback wiring (STT → TTS, no LLM)**
+- [x] **T1.5 — Loopback wiring (STT → TTS, no LLM)**
   Branch: `stage-1/t1.5-loopback`
   Do: Add an endpoint that takes captured audio, runs it through the Whisper adapter, immediately runs the resulting text through the Piper adapter, and returns/plays the synthesized audio — validating the full pipeline without AI logic yet.
   Dependencies: T1.2, T1.3, T1.4.
