@@ -27,9 +27,9 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T3.3 — OpenAI adapter
 Branch: `stage-3/t3.3-openai-adapter`
 Sub-steps:
-- [ ] 1. Add `openai` dependency.
-- [ ] 2. Create `app/adapters/llm/openai_adapter.py`.
-- [ ] 3. Create `tests/adapters/llm/test_openai.py`.
+- [x] 1. Add `openai` dependency.
+- [x] 2. Create `app/adapters/llm/openai_adapter.py`.
+- [x] 3. Create `tests/adapters/llm/test_openai.py`.
 
 ---
 
