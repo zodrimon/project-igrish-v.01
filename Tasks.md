@@ -243,7 +243,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test confirms buffer caps at N turns (oldest dropped first); manual multi-turn test confirms a follow-up question uses prior-turn context correctly.
   Commit: `feat: add rolling conversation buffer`
 
-- [ ] **T4.2 — Sentence-level streaming TTS**
+- [x] **T4.2 — Sentence-level streaming TTS**
   Branch: `stage-4/t4.2-streaming-tts`
   Do: Chunk streamed LLM output on sentence boundaries and begin TTS synthesis/playback per-sentence rather than waiting for the full response.
   Dependencies: T3.8.
