@@ -236,7 +236,7 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 4 — Conversation Engine
 *Goal: multi-turn conversation with short-term context, streaming TTS, sessions.*
 
-- [ ] **T4.1 — Rolling conversation buffer**
+- [x] **T4.1 — Rolling conversation buffer**
   Branch: `stage-4/t4.1-conversation-buffer`
   Do: Implement `core/conversation.py`: an in-memory rolling buffer of the last N turns, injected into the prompt via the T3.6 builder.
   Dependencies: T3.8.
