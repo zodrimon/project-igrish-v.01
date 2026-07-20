@@ -41,3 +41,21 @@ app.include_router(voice.router)
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+
+from app.core.db import SessionLocal
+from app.models import Base
+from sqlalchemy import text
+from app.memory.store_semantic import global_semantic_store
+
+@app.delete("/api/memory")
+async def purge_memory():
+    # Clear semantic memory
+    global_semantic_store.clear()
+    
+    # Clear SQL memory (truncate all tables except alembic_version)
+    async with SessionLocal() as db:
+        for table in reversed(Base.metadata.sorted_tables):
+            await db.execute(text(f"DELETE FROM {table.name}"))
+        await db.commit()
+        
+    return {"status": "success", "message": "Memory purged"}

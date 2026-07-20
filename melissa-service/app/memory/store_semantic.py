@@ -25,4 +25,9 @@ class SemanticMemoryStore:
             return results["documents"][0]
         return []
 
+    def clear(self):
+        """Clears all semantic memory."""
+        self.client.delete_collection("memory_semantic")
+        self.collection = self.client.create_collection(name="memory_semantic")
+
 global_semantic_store = SemanticMemoryStore()

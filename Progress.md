@@ -27,8 +27,8 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T5.7 — Memory purge action
 Branch: `stage-5/t5.7-memory-purge`
 Sub-steps:
-- [ ] 1. Add `DELETE /api/memory` endpoint to `app/main.py`.
-- [ ] 2. Implement logic to clear SQL and semantic stores.
+- [x] 1. Add `DELETE /api/memory` endpoint to `app/main.py`.
+- [x] 2. Implement logic to clear SQL and semantic stores.
 
 ---
 
