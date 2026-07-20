@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T1.3 — Piper TTS adapter
-Branch: `stage-1/t1.3-piper-adapter`
-Sub-steps:
-- [x] 1. Install `piper-tts` dependency in `melissa-service`.
-- [x] 2. Implement `PiperTTSAdapter` in `app/adapters/tts/piper.py`.
-- [x] 3. Write unit tests to synthesize a string and confirm non-empty output.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T1.3 — Piper TTS adapter — COMPLETE
+Branch: stage-1/t1.3-piper-adapter (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: piper-tts adapter created and unit tested to generate WAV bytes.
+```
 
 ```
 ### T1.2 — Whisper STT adapter — COMPLETE
