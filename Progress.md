@@ -24,19 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T5.1 — Structured schema + migrations
-Branch: `stage-5/t5.1-sql-schema`
-Sub-steps:
-- [x] 1. Add `sqlalchemy` and `alembic` dependencies.
-- [x] 2. Initialize Alembic.
-- [x] 3. Define models for goals, projects, preferences, habits, nudge_log, conversations, turns.
-- [x] 4. Create initial migration.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T5.1 — Structured schema + migrations — COMPLETE
+Branch: stage-5/t5.1-sql-schema (merged)
+Sub-steps: 4 ticked, PR merged.
+Notes: Added SQLAlchemy models, Alembic migrations, and SQLite DB setup.
+```
 
 ```
 ### T4.3 — Session lifecycle — COMPLETE
