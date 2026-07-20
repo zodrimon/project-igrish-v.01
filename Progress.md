@@ -24,17 +24,24 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T5.3 — Semantic retrieval in prompt
-Branch: `stage-5/t5.3-semantic-retrieval`
+### T5.3 (cont) — Verbatim turn write path
+Branch: `stage-5/t5.3-turn-write-path`
 Sub-steps:
-- [x] 1. Update `prompt_builder.py` to accept and format relevant memories.
-- [x] 2. Update `voice.py` to query and store memories.
+- [ ] 1. Update `voice.py` to persist turns to SQL database.
+- [ ] 2. Ensure current session / conversation id is mapped.
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T5.3 — Semantic retrieval in prompt — COMPLETE
+Branch: stage-5/t5.3-semantic-retrieval (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Integrated ChromaDB retrieval into system prompt and voice loop.
+```
 
 ```
 ### T5.2 — Semantic memory store — COMPLETE
