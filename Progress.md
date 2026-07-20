@@ -24,17 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T2.4 — Mic/wake settings toggle
-Branch: `stage-2/t2.4-mic-toggle`
-Sub-steps:
-- [x] 1. Add `/api/v1/voice/wake-word/toggle` endpoint in FastAPI.
-- [x] 2. Update React app to add a UI toggle that calls the endpoint.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T2.4 — Mic/wake settings toggle — COMPLETE
+Branch: stage-2/t2.4-mic-toggle (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Added backend and frontend toggle to enable/disable wake word sensor.
+```
 
 ```
 ### T2.3 — Listening UX cue — COMPLETE
