@@ -145,7 +145,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: manual test confirms detection fires on "Hey Melissa"/"Melissa" and not on a set of similar-sounding control phrases (log false positive/negative rate over ~20 trials).
   Commit: `feat: add wake word detection sensor`
 
-- [ ] **T2.2 — Gate STT behind wake event**
+- [x] **T2.2 — Gate STT behind wake event**
   Branch: `stage-2/t2.2-gate-stt`
   Do: Replace the push-to-talk trigger from Stage 1 with the wake-word event as the trigger for audio capture + STT. Confirm no audio is transcribed before a wake event.
   Dependencies: T2.1, T1.5.
