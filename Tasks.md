@@ -215,7 +215,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test confirms the built prompt contains the persona rules regardless of destination provider.
   Commit: `feat: add centralized persona prompt builder`
 
-- [ ] **T3.7 — Provider selector setting**
+- [x] **T3.7 — Provider selector setting**
   Branch: `stage-3/t3.7-provider-selector`
   Do: Add a settings-driven active-provider + model selector (config-driven, no code change needed to switch).
   Dependencies: T3.3, T3.4, T3.5.
