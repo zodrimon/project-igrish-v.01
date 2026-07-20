@@ -15,6 +15,7 @@ dependencies = [
     "python-dotenv",
     "openai",
     "anthropic",
+    "google-genai",
 ]
 
 [project.optional-dependencies]
