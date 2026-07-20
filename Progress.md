@@ -24,7 +24,13 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T3.2 — Secrets loader
+Branch: `stage-3/t3.2-secrets-loader`
+Sub-steps:
+- [ ] 1. Add `keyring` and `python-dotenv` dependencies.
+- [ ] 2. Update `.gitignore` to ignore `.env` files.
+- [ ] 3. Create `app/core/secrets.py` to wrap `keyring` and `.env`.
+- [ ] 4. Create `tests/core/test_secrets.py`.
 
 ---
 
