@@ -11,6 +11,8 @@ dependencies = [
     "python-multipart",
     "pyaudio",
     "pocketsphinx",
+    "keyring",
+    "python-dotenv",
 ]
 
 [project.optional-dependencies]
