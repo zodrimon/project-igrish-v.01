@@ -73,9 +73,14 @@ function App() {
     <main className="container">
       <h1>Melissa Companion</h1>
       <div style={{ marginTop: "2rem" }}>
+        {isRecording && (
+          <div className="listening-pulse">
+            <span role="img" aria-label="microphone" style={{ fontSize: "2rem" }}>🎤</span>
+          </div>
+        )}
         <p>Status: <strong style={{ color: isRecording ? "red" : "green" }}>{isRecording ? "Listening..." : "Idle"}</strong></p>
-        <p>Say "Melissa" to wake up and start talking.</p>
-        <button onMouseDown={startRecording} onMouseUp={stopRecording} onMouseLeave={stopRecording}>
+        {!isRecording && <p>Say "Melissa" to wake up and start talking.</p>}
+        <button onMouseDown={startRecording} onMouseUp={stopRecording} onMouseLeave={stopRecording} style={{ marginTop: "1rem" }}>
           Manual Push to Talk
         </button>
       </div>
