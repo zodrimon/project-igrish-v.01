@@ -13,6 +13,7 @@ from app.core.context_snapshot import global_context_snapshot
 from app.adapters.sensors.active_window import ActiveWindowSensor
 from app.adapters.sensors.process_list import ProcessListSensor
 from app.adapters.sensors.clipboard import ClipboardSensor
+from app.adapters.sensors.input_activity import InputActivitySensor
 
 def on_wake_detected():
     # Push to queue (needs to be thread-safe since WakeWordSensor runs in a thread)
@@ -27,6 +28,7 @@ async def lifespan(app: FastAPI):
     global_context_snapshot.register_sensor(ActiveWindowSensor())
     global_context_snapshot.register_sensor(ProcessListSensor())
     global_context_snapshot.register_sensor(ClipboardSensor(enabled=False))
+    global_context_snapshot.register_sensor(InputActivitySensor())
     global_context_snapshot.start(interval_seconds=2.0)
     
     wake_sensor.start()

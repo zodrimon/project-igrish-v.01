@@ -27,8 +27,8 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T6.5 — Input activity sensor
 Branch: `stage-6/t6.5-input-activity-sensor`
 Sub-steps:
-- [ ] 1. Create `app/adapters/sensors/input_activity.py`.
-- [ ] 2. Create tests.
+- [x] 1. Create `app/adapters/sensors/input_activity.py`.
+- [x] 2. Create tests.
 
 ---
 
