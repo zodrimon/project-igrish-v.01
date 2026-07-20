@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T2.2 — Gate STT behind wake event
-Branch: `stage-2/t2.2-gate-stt`
-Sub-steps:
-- [x] 1. Add SSE `/api/v1/voice/events` endpoint in FastAPI.
-- [x] 2. Wire `WakeWordSensor` to emit events to the SSE endpoint.
-- [x] 3. Update React app to listen to SSE and trigger 5s capture on wake word.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T2.2 — Gate STT behind wake event — COMPLETE
+Branch: stage-2/t2.2-gate-stt (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: SSE endpoint established. React app captures audio when wake word is detected.
+```
 
 ```
 ### T2.1 — Wake word engine integration — COMPLETE
