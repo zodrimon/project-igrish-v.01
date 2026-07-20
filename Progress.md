@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T3.1 — LLMProvider interface
-Branch: `stage-3/t3.1-llm-port`
-Sub-steps:
-- [x] 1. Define `LLMProvider` in `ports/llm.py`.
-- [x] 2. Implement mock adapter in `adapters/llm/mock.py`.
-- [x] 3. Write unit test for mock adapter.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T3.1 — LLMProvider interface — COMPLETE
+Branch: stage-3/t3.1-llm-port (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: Added LLMProvider abstract base class and a MockLLMAdapter for testing.
+```
 
 ```
 ### T2.4 — Mic/wake settings toggle — COMPLETE
