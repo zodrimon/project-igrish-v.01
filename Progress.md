@@ -24,7 +24,11 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T5.7 — Memory purge action
+Branch: `stage-5/t5.7-memory-purge`
+Sub-steps:
+- [ ] 1. Add `DELETE /api/memory` endpoint to `app/main.py`.
+- [ ] 2. Implement logic to clear SQL and semantic stores.
 
 ---
 
