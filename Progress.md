@@ -27,9 +27,9 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T5.5 — Context Aggregator (read path)
 Branch: `stage-5/t5.5-context-aggregator`
 Sub-steps:
-- [ ] 1. Create `app/memory/context_aggregator.py`.
-- [ ] 2. Fetch structured DB context.
-- [ ] 3. Create tests.
+- [x] 1. Create `app/memory/context_aggregator.py`.
+- [x] 2. Fetch structured DB context.
+- [x] 3. Create tests.
 
 ---
 
