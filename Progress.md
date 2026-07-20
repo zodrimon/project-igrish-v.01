@@ -27,8 +27,8 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T3.6 — Persona prompt builder
 Branch: `stage-3/t3.6-prompt-builder`
 Sub-steps:
-- [ ] 1. Create `app/core/prompt_builder.py`.
-- [ ] 2. Create `tests/core/test_prompt_builder.py`.
+- [x] 1. Create `app/core/prompt_builder.py`.
+- [x] 2. Create `tests/core/test_prompt_builder.py`.
 
 ---
 
