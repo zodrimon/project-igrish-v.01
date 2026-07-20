@@ -24,19 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T3.2 — Secrets loader
-Branch: `stage-3/t3.2-secrets-loader`
-Sub-steps:
-- [x] 1. Add `keyring` and `python-dotenv` dependencies.
-- [x] 2. Update `.gitignore` to ignore `.env` files.
-- [x] 3. Create `app/core/secrets.py` to wrap `keyring` and `.env`.
-- [x] 4. Create `tests/core/test_secrets.py`.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T3.2 — Secrets loader — COMPLETE
+Branch: stage-3/t3.2-secrets-loader (merged)
+Sub-steps: 4 ticked, PR merged.
+Notes: Added keyring and python-dotenv based secure secrets loader.
+```
 
 ```
 ### T3.1 — LLMProvider interface — COMPLETE
