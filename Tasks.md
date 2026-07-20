@@ -222,7 +222,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: switching the setting between at least two providers and re-running the same prompt produces a response via the newly selected provider (verify via provider-specific log line).
   Commit: `feat: add LLM provider/model selector setting`
 
-- [ ] **T3.8 — Full voice loop integration (wake → STT → LLM → TTS)**
+- [x] **T3.8 — Full voice loop integration (wake → STT → LLM → TTS)**
   Branch: `stage-3/t3.8-voice-loop-llm`
   Do: Replace Stage 1's loopback with a real call through the active `LLMProvider` (via the prompt builder) between STT and TTS.
   Dependencies: T2.2, T3.6, T3.7.
