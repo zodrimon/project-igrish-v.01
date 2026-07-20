@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { register } from "@tauri-apps/plugin-global-shortcut";
 import "./App.css";
 
 function App() {
@@ -51,33 +50,23 @@ function App() {
   };
 
   useEffect(() => {
-    let isRegistered = false;
+    const eventSource = new EventSource("http://127.0.0.1:8000/api/v1/voice/events");
     
-    async function setupShortcut() {
-      try {
-        await register("CommandOrControl+Shift+Space", (event) => {
-          console.log("Shortcut event:", event);
-          // @ts-ignore
-          if (event.state === "Pressed") {
-            startRecording();
-          // @ts-ignore
-          } else if (event.state === "Released") {
-            stopRecording();
-          } else {
-            // Toggle fallback if state is not provided
-            if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
-              stopRecording();
-            } else {
-              startRecording();
-            }
-          }
-        });
-        isRegistered = true;
-      } catch (e) {
-        console.error("Failed to register shortcut", e);
+    eventSource.onmessage = (event) => {
+      console.log("Received SSE:", event.data);
+      if (event.data === "WAKE_WORD_DETECTED") {
+        console.log("Wake word detected! Starting 5-second recording...");
+        startRecording();
+        
+        setTimeout(() => {
+          stopRecording();
+        }, 5000);
       }
-    }
-    setupShortcut();
+    };
+
+    return () => {
+      eventSource.close();
+    };
   }, []);
 
   return (
@@ -85,9 +74,9 @@ function App() {
       <h1>Melissa Companion</h1>
       <div style={{ marginTop: "2rem" }}>
         <p>Status: <strong style={{ color: isRecording ? "red" : "green" }}>{isRecording ? "Listening..." : "Idle"}</strong></p>
-        <p>Hold <code>Ctrl+Shift+Space</code> to talk, or click the button below.</p>
+        <p>Say "Melissa" to wake up and start talking.</p>
         <button onMouseDown={startRecording} onMouseUp={stopRecording} onMouseLeave={stopRecording}>
-          Push to Talk
+          Manual Push to Talk
         </button>
       </div>
     </main>

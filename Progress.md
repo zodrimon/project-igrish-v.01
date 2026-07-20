@@ -27,9 +27,9 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T2.2 — Gate STT behind wake event
 Branch: `stage-2/t2.2-gate-stt`
 Sub-steps:
-- [ ] 1. Add SSE `/api/v1/voice/events` endpoint in FastAPI.
-- [ ] 2. Wire `WakeWordSensor` to emit events to the SSE endpoint.
-- [ ] 3. Update React app to listen to SSE and trigger 5s capture on wake word.
+- [x] 1. Add SSE `/api/v1/voice/events` endpoint in FastAPI.
+- [x] 2. Wire `WakeWordSensor` to emit events to the SSE endpoint.
+- [x] 3. Update React app to listen to SSE and trigger 5s capture on wake word.
 
 ---
 

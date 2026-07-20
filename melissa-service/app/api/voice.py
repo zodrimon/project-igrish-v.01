@@ -6,10 +6,23 @@ from app.adapters.tts.piper import PiperTTSAdapter
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/voice", tags=["Voice"])
 
+import asyncio
+from fastapi.responses import StreamingResponse
+
 logger.info("Loading STT and TTS models...")
 stt_adapter = WhisperSTTAdapter()
 tts_adapter = PiperTTSAdapter()
 logger.info("Models loaded.")
+
+wake_word_event_queue = asyncio.Queue()
+
+@router.get("/events")
+async def voice_events():
+    async def event_generator():
+        while True:
+            msg = await wake_word_event_queue.get()
+            yield f"data: {msg}\n\n"
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
 
 @router.post("/stream")
 async def stream_audio(audio: UploadFile = File(...)):
