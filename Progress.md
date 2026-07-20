@@ -24,7 +24,11 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T3.7 — Provider selector setting
+Branch: `stage-3/t3.7-provider-selector`
+Sub-steps:
+- [ ] 1. Create `app/core/llm_registry.py`.
+- [ ] 2. Create `tests/core/test_llm_registry.py`.
 
 ---
 
