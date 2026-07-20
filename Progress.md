@@ -24,16 +24,18 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T6.4 — Clipboard sensor
-Branch: `stage-6/t6.4-clipboard-sensor`
-Sub-steps:
-- [x] 1. Create `app/adapters/sensors/clipboard.py`.
-- [x] 2. Create tests.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
+```
+### T6.4 — Clipboard sensor — COMPLETE
+Branch: stage-6/t6.4-clipboard-sensor (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Added ClipboardSensor (opt-in) using pyperclip.
+```
 ```
 ### T6.3 — Process list sensor — COMPLETE
 Branch: stage-6/t6.3-process-list (merged)

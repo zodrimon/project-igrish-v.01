@@ -348,7 +348,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: same pattern as T6.2.
   Commit: `feat: add process list sensor`
 
-- [ ] **T6.4 — Clipboard sensor**
+- [x] **T6.4 — Clipboard sensor**
   Branch: `stage-6/t6.4-clipboard-sensor`
   Do: Implement `adapters/sensors/clipboard.py`. Off by default (most privacy-sensitive of this batch — confirm content is used transiently only, never persisted to the snapshot's history or to disk).
   Dependencies: T6.1.
