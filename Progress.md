@@ -24,17 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T3.7 — Provider selector setting
-Branch: `stage-3/t3.7-provider-selector`
-Sub-steps:
-- [x] 1. Create `app/core/llm_registry.py`.
-- [x] 2. Create `tests/core/test_llm_registry.py`.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T3.7 — Provider selector setting — COMPLETE
+Branch: stage-3/t3.7-provider-selector (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Added LLM registry to provide the active LLMProvider.
+```
 
 ```
 ### T3.6 — Persona prompt builder — COMPLETE
