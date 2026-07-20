@@ -173,7 +173,7 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 3 — Cloud AI Integration
 *Goal: real generated replies via cloud LLM providers, replacing loopback.*
 
-- [ ] **T3.1 — LLMProvider interface**
+- [x] **T3.1 — LLMProvider interface**
   Branch: `stage-3/t3.1-llm-port`
   Do: Define `ports/llm.py`: `LLMProvider.generate(messages, stream=True) -> Response`, plus a mock adapter.
   Dependencies: T0.2.
