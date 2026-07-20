@@ -24,7 +24,12 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T2.1 — Wake word engine integration
+Branch: `stage-2/t2.1-wake-word-sensor`
+Sub-steps:
+- [x] 1. Add `pocketsphinx` and `pyaudio` dependencies.
+- [x] 2. Implement `WakeWordSensor` using `pyaudio` stream and `pocketsphinx`.
+- [x] 3. Write a small manual test script to verify it works.
 
 ---
 

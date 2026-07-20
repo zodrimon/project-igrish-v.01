@@ -9,6 +9,8 @@ dependencies = [
     "faster-whisper",
     "piper-tts",
     "python-multipart",
+    "pyaudio",
+    "pocketsphinx",
 ]
 
 [project.optional-dependencies]
