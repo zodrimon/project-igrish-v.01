@@ -187,7 +187,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test with a fake credential store; manual test confirms a real key set via the OS credential store is retrievable; confirm `git status` shows no secret file as trackable.
   Commit: `feat: add secure secrets loader`
 
-- [ ] **T3.3 — OpenAI adapter**
+- [x] **T3.3 — OpenAI adapter**
   Branch: `stage-3/t3.3-openai-adapter`
   Do: Implement `adapters/llm/openai.py` implementing `LLMProvider`, using the T3.2 secrets loader.
   Dependencies: T3.1, T3.2.
