@@ -16,6 +16,9 @@ dependencies = [
     "openai",
     "anthropic",
     "google-genai",
+    "sqlalchemy",
+    "alembic",
+    "aiosqlite",
 ]
 
 [project.optional-dependencies]

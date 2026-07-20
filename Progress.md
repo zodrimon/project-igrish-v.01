@@ -27,10 +27,10 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T5.1 — Structured schema + migrations
 Branch: `stage-5/t5.1-sql-schema`
 Sub-steps:
-- [ ] 1. Add `sqlalchemy` and `alembic` dependencies.
-- [ ] 2. Initialize Alembic.
-- [ ] 3. Define models for goals, projects, preferences, habits, nudge_log, conversations, turns.
-- [ ] 4. Create initial migration.
+- [x] 1. Add `sqlalchemy` and `alembic` dependencies.
+- [x] 2. Initialize Alembic.
+- [x] 3. Define models for goals, projects, preferences, habits, nudge_log, conversations, turns.
+- [x] 4. Create initial migration.
 
 ---
 
