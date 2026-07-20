@@ -24,19 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T0.4 — CI pipeline
-Branch: `stage-0/t0.4-ci`
-Sub-steps:
-- [x] 1. Write `.github/workflows/ci.yml` for Python and Rust/Node.js linting and testing.
-- [x] 2. Add a passing `pytest` in `melissa-service/tests/test_main.py`.
-- [x] 3. Push and create a Pull Request to verify green CI.
-- [x] 4. Intentionally break lint (red CI), then revert (green CI).
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T0.4 — CI pipeline — COMPLETE
+Branch: stage-0/t0.4-ci (merged)
+Sub-steps: 4 ticked, PR merged.
+Notes: CI verified with intentional breakage and fix.
+```
 
 ```
 ### T0.3 — Tauri shell skeleton — COMPLETE (Unverifiable)
