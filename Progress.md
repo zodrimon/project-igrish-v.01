@@ -24,7 +24,11 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T2.3 — Listening UX cue
+Branch: `stage-2/t2.3-listening-cue`
+Sub-steps:
+- [ ] 1. Add visual pulse animation in `App.css`.
+- [ ] 2. Apply animation in `App.tsx` when recording is active.
 
 ---
 
