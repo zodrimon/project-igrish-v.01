@@ -271,7 +271,7 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 5 — Memory
 *Goal: cross-session structured + semantic memory per `context.md` §8.*
 
-- [ ] **T5.1 — Structured schema + migrations**
+- [x] **T5.1 — Structured schema + migrations**
   Branch: `stage-5/t5.1-sql-schema`
   Do: Set up SQLite via SQLAlchemy + Alembic migrations for `goals`, `projects`, `preferences`, `habits`, `nudge_log`, `conversations`, `turns` (per `context.md` §12).
   Dependencies: T0.2.
