@@ -285,7 +285,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test embeds and stores a sample turn, then retrieves it via a similar query with a plausible similarity score.
   Commit: `feat: add semantic memory store`
 
-- [ ] **T5.3 — Verbatim turn write path**
+- [x] **T5.3 — Verbatim turn write path**
   Branch: `stage-5/t5.3-turn-write-path`
   Do: Wire every conversation turn (from Stage 4) to be written to both `turns` (SQL) and the semantic store.
   Dependencies: T5.1, T5.2, T4.1.

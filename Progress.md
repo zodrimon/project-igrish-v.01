@@ -24,17 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T5.3 (cont) — Verbatim turn write path
-Branch: `stage-5/t5.3-turn-write-path`
-Sub-steps:
-- [x] 1. Update `voice.py` to persist turns to SQL database.
-- [x] 2. Ensure current session / conversation id is mapped.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T5.3 — Verbatim turn write path — COMPLETE
+Branch: stage-5/t5.3-turn-write-path (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Integrated SQL write path for turns along with semantic write path.
+```
 
 ```
 ### T5.3 — Semantic retrieval in prompt — COMPLETE
