@@ -24,7 +24,12 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T1.3 — Piper TTS adapter
+Branch: `stage-1/t1.3-piper-adapter`
+Sub-steps:
+- [ ] 1. Install `piper-tts` dependency in `melissa-service`.
+- [ ] 2. Implement `PiperTTSAdapter` in `app/adapters/tts/piper.py`.
+- [ ] 3. Write unit tests to synthesize a string and confirm non-empty output.
 
 ---
 
