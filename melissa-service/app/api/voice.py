@@ -56,7 +56,10 @@ async def stream_audio(audio: UploadFile = File(...)):
     from app.core.prompt_builder import build_prompt
     from app.core.conversation import global_conversation_buffer
     from app.core.streaming import chunk_sentences
+    from app.core.session import global_session_manager
     from fastapi.responses import StreamingResponse
+    
+    global_session_manager.ping()
     
     llm_provider = get_llm_provider()
     history = global_conversation_buffer.get_history()

@@ -27,9 +27,9 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T4.3 — Session lifecycle
 Branch: `stage-4/t4.3-session-lifecycle`
 Sub-steps:
-- [ ] 1. Create `app/core/session.py`.
-- [ ] 2. Update `voice.py` and `conversation.py` to use sessions.
-- [ ] 3. Create tests.
+- [x] 1. Create `app/core/session.py`.
+- [x] 2. Update `voice.py` and `conversation.py` to use sessions.
+- [x] 3. Create tests.
 
 ---
 
