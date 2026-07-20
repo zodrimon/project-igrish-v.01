@@ -24,7 +24,11 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T6.3 — Process list sensor
+Branch: `stage-6/t6.3-process-list`
+Sub-steps:
+- [ ] 1. Create `app/adapters/sensors/process_list.py`.
+- [ ] 2. Create tests.
 
 ---
 
