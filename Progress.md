@@ -24,17 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T1.5 — Loopback wiring (STT → TTS, no LLM)
-Branch: `stage-1/t1.5-loopback`
-Sub-steps:
-- [x] 1. Update FastAPI endpoint to run Whisper STT -> Piper TTS.
-- [x] 2. Update React app to receive the synthesized audio and play it.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T1.5 — Loopback wiring (STT → TTS, no LLM) — COMPLETE
+Branch: stage-1/t1.5-loopback (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Fast API returns synth audio chunk via Piper, React plays it back successfully. Loopback proven.
+```
 
 ```
 ### T1.4 — Push-to-talk hotkey in shell — COMPLETE
