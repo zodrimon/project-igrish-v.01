@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T2.1 — Wake word engine integration
-Branch: `stage-2/t2.1-wake-word-sensor`
-Sub-steps:
-- [x] 1. Add `pocketsphinx` and `pyaudio` dependencies.
-- [x] 2. Implement `WakeWordSensor` using `pyaudio` stream and `pocketsphinx`.
-- [x] 3. Write a small manual test script to verify it works.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T2.1 — Wake word engine integration — COMPLETE
+Branch: stage-2/t2.1-wake-word-sensor (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: Added pocketsphinx wake word sensor triggered on 'melissa'.
+```
 
 ```
 ### T1.5 — Loopback wiring (STT → TTS, no LLM) — COMPLETE
