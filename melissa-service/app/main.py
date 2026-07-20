@@ -25,6 +25,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Melissa Service", version="0.1.0", lifespan=lifespan)
 
+app.state.wake_sensor = wake_sensor
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

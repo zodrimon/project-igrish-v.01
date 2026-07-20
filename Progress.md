@@ -27,8 +27,8 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T2.4 — Mic/wake settings toggle
 Branch: `stage-2/t2.4-mic-toggle`
 Sub-steps:
-- [ ] 1. Add `/api/v1/voice/wake-word/toggle` endpoint in FastAPI.
-- [ ] 2. Update React app to add a UI toggle that calls the endpoint.
+- [x] 1. Add `/api/v1/voice/wake-word/toggle` endpoint in FastAPI.
+- [x] 2. Update React app to add a UI toggle that calls the endpoint.
 
 ---
 

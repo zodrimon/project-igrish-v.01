@@ -1,10 +1,24 @@
 import logging
-from fastapi import APIRouter, UploadFile, File, Response
+from fastapi import APIRouter, UploadFile, File, Response, Request
+from pydantic import BaseModel
 from app.adapters.stt.whisper import WhisperSTTAdapter
 from app.adapters.tts.piper import PiperTTSAdapter
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/voice", tags=["Voice"])
+
+class ToggleRequest(BaseModel):
+    enabled: bool
+
+@router.post("/wake-word/toggle")
+async def toggle_wake_word(req: ToggleRequest, request: Request):
+    sensor = request.app.state.wake_sensor
+    if req.enabled:
+        sensor.start()
+        return {"status": "started"}
+    else:
+        sensor.stop()
+        return {"status": "stopped"}
 
 import asyncio
 from fastapi.responses import StreamingResponse

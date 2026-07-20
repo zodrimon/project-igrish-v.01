@@ -3,7 +3,24 @@ import "./App.css";
 
 function App() {
   const [isRecording, setIsRecording] = useState(false);
+  const [wakeWordEnabled, setWakeWordEnabled] = useState(true);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+
+  const toggleWakeWord = async () => {
+    const newState = !wakeWordEnabled;
+    try {
+      await fetch("http://127.0.0.1:8000/api/v1/voice/wake-word/toggle", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ enabled: newState })
+      });
+      setWakeWordEnabled(newState);
+    } catch (err) {
+      console.error("Failed to toggle wake word:", err);
+    }
+  };
 
   const startRecording = async () => {
     if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") return;
@@ -79,7 +96,20 @@ function App() {
           </div>
         )}
         <p>Status: <strong style={{ color: isRecording ? "red" : "green" }}>{isRecording ? "Listening..." : "Idle"}</strong></p>
-        {!isRecording && <p>Say "Melissa" to wake up and start talking.</p>}
+        
+        <div style={{ margin: "1rem 0", display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
+          <label htmlFor="wakeWordToggle">Always-listening (Wake Word): </label>
+          <input 
+            type="checkbox" 
+            id="wakeWordToggle" 
+            checked={wakeWordEnabled} 
+            onChange={toggleWakeWord}
+          />
+        </div>
+
+        {!isRecording && wakeWordEnabled && <p>Say "Melissa" to wake up and start talking.</p>}
+        {!isRecording && !wakeWordEnabled && <p>Wake word disabled.</p>}
+        
         <button onMouseDown={startRecording} onMouseUp={stopRecording} onMouseLeave={stopRecording} style={{ marginTop: "1rem" }}>
           Manual Push to Talk
         </button>
