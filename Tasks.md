@@ -180,7 +180,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test against the mock adapter confirms interface shape (messages in, response out, streaming iterator works).
   Commit: `feat: add LLMProvider interface with mock adapter`
 
-- [ ] **T3.2 — Secrets loader**
+- [x] **T3.2 — Secrets loader**
   Branch: `stage-3/t3.2-secrets-loader`
   Do: Implement a secrets loader reading API keys from the Windows Credential Manager (or an encrypted local file as fallback) — never plaintext in repo/committed config. Add `.gitignore` rules guaranteeing no key file is ever committed.
   Dependencies: T0.2.
