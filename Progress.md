@@ -24,17 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T3.6 — Persona prompt builder
-Branch: `stage-3/t3.6-prompt-builder`
-Sub-steps:
-- [x] 1. Create `app/core/prompt_builder.py`.
-- [x] 2. Create `tests/core/test_prompt_builder.py`.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T3.6 — Persona prompt builder — COMPLETE
+Branch: stage-3/t3.6-prompt-builder (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Added prompt builder with system persona prompt.
+```
 
 ```
 ### T3.5 — Gemini adapter — COMPLETE
