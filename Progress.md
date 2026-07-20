@@ -28,7 +28,7 @@ This file is the **single source of truth for "exactly where things stand right 
 Branch: `stage-0/t0.4-ci`
 Sub-steps:
 - [x] 1. Write `.github/workflows/ci.yml` for Python and Rust/Node.js linting and testing.
-- [ ] 2. Add a passing `pytest` in `melissa-service/tests/test_main.py`.
+- [x] 2. Add a passing `pytest` in `melissa-service/tests/test_main.py`.
 - [ ] 3. Push and create a Pull Request to verify green CI.
 - [ ] 4. Intentionally break lint (red CI), then revert (green CI).
 
