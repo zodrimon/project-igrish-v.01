@@ -327,7 +327,7 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 6 — Desktop Awareness
 *Goal: opt-in sensing of what's happening on the PC, per `context.md` §10.*
 
-- [ ] **T6.1 — Sensor framework + Context Snapshot**
+- [x] **T6.1 — Sensor framework + Context Snapshot**
   Branch: `stage-6/t6.1-sensor-framework`
   Do: Define a common `ContextSensor` interface and a short-lived, in-memory Context Snapshot that sensors write into on a poll interval (no long-term persistence of raw signals).
   Dependencies: T0.2.

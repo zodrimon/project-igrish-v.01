@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T6.1 — Sensor framework + Context Snapshot
-Branch: `stage-6/t6.1-sensor-framework`
-Sub-steps:
-- [x] 1. Create `app/ports/sensor.py` interface.
-- [x] 2. Create `app/core/context_snapshot.py` for holding short-lived state.
-- [x] 3. Create tests.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T6.1 — Sensor framework + Context Snapshot — COMPLETE
+Branch: stage-6/t6.1-sensor-framework (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: Created ContextSensor interface and short-lived ContextSnapshot registry.
+```
 
 ```
 ### T5.7 — Memory purge action — COMPLETE
