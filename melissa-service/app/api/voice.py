@@ -57,13 +57,27 @@ async def stream_audio(audio: UploadFile = File(...)):
     from app.core.conversation import global_conversation_buffer
     from app.core.streaming import chunk_sentences
     from app.core.session import global_session_manager
+    from app.memory.store_semantic import global_semantic_store
     from fastapi.responses import StreamingResponse
+    import uuid
     
     global_session_manager.ping()
     
     llm_provider = get_llm_provider()
     history = global_conversation_buffer.get_history()
-    messages = build_prompt(text, conversation_history=history)
+    
+    # Query semantic memory for relevant context
+    def _query_semantic():
+        return global_semantic_store.query_memory(text, n_results=3)
+    relevant_memories = await asyncio.to_thread(_query_semantic)
+    
+    messages = build_prompt(text, conversation_history=history, relevant_memories=relevant_memories)
+    
+    # Store the user's turn in semantic memory asynchronously
+    user_turn_id = str(uuid.uuid4())
+    asyncio.create_task(asyncio.to_thread(
+        global_semantic_store.store_turn, user_turn_id, text, {"role": "user"}
+    ))
     
     llm_stream = llm_provider.generate(messages, stream=True)
     sentence_stream = chunk_sentences(llm_stream)
@@ -76,7 +90,13 @@ async def stream_audio(audio: UploadFile = File(...)):
             full_text.append(sentence)
             yield sentence
         
-        global_conversation_buffer.add_turn(text, " ".join(full_text))
+        joined_text = " ".join(full_text)
+        global_conversation_buffer.add_turn(text, joined_text)
+        
+        melissa_turn_id = str(uuid.uuid4())
+        asyncio.create_task(asyncio.to_thread(
+            global_semantic_store.store_turn, melissa_turn_id, joined_text, {"role": "melissa"}
+        ))
         
     audio_stream = tts_adapter.synthesize_stream(wrapped_sentence_stream())
     

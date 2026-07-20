@@ -12,13 +12,22 @@ def get_system_prompt() -> str:
         "Keep your answers short and conversational, as if spoken aloud."
     )
 
-def build_prompt(user_input: str, conversation_history: List[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
+def build_prompt(
+    user_input: str, 
+    conversation_history: List[Dict[str, Any]] = None,
+    relevant_memories: List[str] = None
+) -> List[Dict[str, Any]]:
     """
     Builds the messages array for the LLM provider, injecting the system prompt
     and optionally prepending conversation history.
     """
-    messages = [{"role": "system", "content": get_system_prompt()}]
-    
+    system_prompt_content = get_system_prompt()
+    if relevant_memories:
+        system_prompt_content += "\nRelevant past memories/context:\n"
+        for mem in relevant_memories:
+            system_prompt_content += f"- {mem}\n"
+            
+    messages = [{"role": "system", "content": system_prompt_content}]
     if conversation_history:
         messages.extend(conversation_history)
         
