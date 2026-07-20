@@ -152,7 +152,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: with wake word active, ambient conversation not containing "Melissa" produces zero STT calls (verify via log/counter); saying the wake word triggers exactly one capture window.
   Commit: `feat: gate STT capture behind wake word event`
 
-- [ ] **T2.3 — Listening UX cue**
+- [x] **T2.3 — Listening UX cue**
   Branch: `stage-2/t2.3-listening-cue`
   Do: Add a short audio and/or visual cue in the Tauri shell immediately after wake detection.
   Dependencies: T2.2.
