@@ -159,7 +159,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: manual — cue is audible/visible within a few hundred ms of saying the wake word.
   Commit: `feat: add listening UX cue after wake detection`
 
-- [ ] **T2.4 — Mic/wake settings toggle**
+- [x] **T2.4 — Mic/wake settings toggle**
   Branch: `stage-2/t2.4-mic-toggle`
   Do: Add a settings entry to fully disable always-listening; verify the wake-word sensor actually stops when disabled.
   Dependencies: T2.1.
