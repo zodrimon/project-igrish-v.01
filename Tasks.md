@@ -355,7 +355,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: manual test confirms clipboard content is visible in the live snapshot when enabled, and confirm nothing is written to any log/DB when disabled — check disk/DB directly, don't just trust the toggle.
   Commit: `feat: add clipboard sensor (opt-in, off by default)`
 
-- [ ] **T6.5 — Input activity sensor**
+- [x] **T6.5 — Input activity sensor**
   Branch: `stage-6/t6.5-input-activity-sensor`
   Do: Implement `adapters/sensors/input_activity.py` (keyboard/mouse activity, idle time).
   Dependencies: T6.1.

@@ -24,16 +24,18 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T6.5 — Input activity sensor
-Branch: `stage-6/t6.5-input-activity-sensor`
-Sub-steps:
-- [x] 1. Create `app/adapters/sensors/input_activity.py`.
-- [x] 2. Create tests.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
+```
+### T6.5 — Input activity sensor — COMPLETE
+Branch: stage-6/t6.5-input-activity-sensor (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Added InputActivitySensor using GetLastInputInfo to check idle time.
+```
 ```
 ### T6.4 — Clipboard sensor — COMPLETE
 Branch: stage-6/t6.4-clipboard-sensor (merged)
