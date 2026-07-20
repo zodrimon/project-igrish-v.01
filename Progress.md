@@ -24,19 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T0.3 — Tauri shell skeleton
-Branch: `stage-0/t0.3-tauri-skeleton`
-Sub-steps:
-- [x] 1. Install `pnpm` globally.
-- [x] 2. Scaffold Tauri + React app in a temporary folder and move contents to `companion-app/`.
-- [x] 3. Install dependencies in `companion-app/` using `pnpm`.
-- [~] 4. Test running `pnpm tauri dev` (ensure it builds and starts). *(Requires MSVC on target machine to build Rust)*
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T0.3 — Tauri shell skeleton — COMPLETE (Unverifiable)
+Branch: stage-0/t0.3-tauri-skeleton (merged)
+Sub-steps: 3 ticked, 1 marked unverifiable.
+Notes: Rust requires MSVC which was not available in this sandbox. User needs to run `pnpm tauri dev` locally to test.
+```
 
 ```
 ### T0.2 — Python service skeleton — COMPLETE
