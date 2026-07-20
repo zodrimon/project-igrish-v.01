@@ -61,7 +61,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: directory listing matches `context.md` §4.
   Commit: `chore: scaffold repo folder structure`
 
-- [ ] **T0.2 — Python service skeleton**
+- [x] **T0.2 — Python service skeleton**
   Branch: `stage-0/t0.2-python-skeleton`
   Do: Initialize `melissa-service/pyproject.toml` (FastAPI, uvicorn, pytest, ruff, black, mypy as dev deps). Create `app/main.py` with a FastAPI app exposing `GET /health` → `{"status": "ok"}`.
   Dependencies: T0.1.
