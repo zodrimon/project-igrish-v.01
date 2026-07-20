@@ -334,7 +334,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test with a fake sensor confirms the snapshot updates on the expected interval and old raw data isn't retained beyond the current snapshot.
   Commit: `feat: add context sensor framework and snapshot`
 
-- [ ] **T6.2 — Active window sensor**
+- [x] **T6.2 — Active window sensor**
   Branch: `stage-6/t6.2-active-window-sensor`
   Do: Implement `adapters/sensors/active_window.py` via Win32 APIs, reporting the active window title/process.
   Dependencies: T6.1.
