@@ -201,7 +201,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: same pattern as T3.3.
   Commit: `feat: add claude LLM adapter`
 
-- [ ] **T3.5 — Gemini adapter**
+- [x] **T3.5 — Gemini adapter**
   Branch: `stage-3/t3.5-gemini-adapter`
   Do: Implement `adapters/llm/gemini.py` implementing `LLMProvider`. (Note: this is the *product's* Gemini adapter, used at runtime by the app — a separate, independent piece of code from the Gemini Pro model driving Antigravity's own development work. Don't conflate the two.)
   Dependencies: T3.1, T3.2.
