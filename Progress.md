@@ -24,7 +24,14 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T0.1 — Repo scaffold
+Branch: `stage-0/t0.1-repo-scaffold`
+Sub-steps:
+- [ ] 1. Create `companion-app` directory structure (`src-tauri`, `src`).
+- [ ] 2. Create `melissa-service` directory structure (`app/core`, `ports`, `adapters/llm`, `tts`, `stt`, `sensors`, `memory`, `plugins`, `api`, `tests`).
+- [ ] 3. Create `shared`, `docs`, `scripts`, `.github/workflows`, and `docker` folders.
+- [ ] 4. Add `.gitkeep` placeholder files to all empty directories.
+- [ ] 5. Verify directory structure matches `context.md` §4.
 
 ---
 
