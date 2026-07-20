@@ -52,7 +52,20 @@ async def stream_audio(audio: UploadFile = File(...)):
     if not text or text.strip().lower() in ("", "[silence]", "[blank audio]"):
         return Response(status_code=204)
         
-    audio_bytes = await tts_adapter.synthesize(text)
+    from app.core.llm_registry import get_llm_provider
+    from app.core.prompt_builder import build_prompt
+    
+    llm_provider = get_llm_provider()
+    messages = build_prompt(text)
+    
+    llm_response_chunks = []
+    async for chunk in llm_provider.generate(messages, stream=False):
+        llm_response_chunks.append(chunk)
+        
+    llm_text = "".join(llm_response_chunks)
+    logger.info(f"LLM Response: '{llm_text}'")
+        
+    audio_bytes = await tts_adapter.synthesize(llm_text)
     logger.info(f"Synthesized audio: {len(audio_bytes)} bytes")
     
     return Response(content=audio_bytes, media_type="audio/wav")

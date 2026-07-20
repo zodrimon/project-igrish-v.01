@@ -27,8 +27,8 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T3.8 — Full voice loop integration
 Branch: `stage-3/t3.8-voice-loop-llm`
 Sub-steps:
-- [ ] 1. Update `app/api/voice.py` to use `LLMProvider`.
-- [ ] 2. Test full loop.
+- [x] 1. Update `app/api/voice.py` to use `LLMProvider`.
+- [x] 2. Test full loop.
 
 ---
 
