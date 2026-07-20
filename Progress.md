@@ -24,7 +24,11 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T5.3 — Semantic retrieval in prompt
+Branch: `stage-5/t5.3-semantic-retrieval`
+Sub-steps:
+- [ ] 1. Update `prompt_builder.py` to accept and format relevant memories.
+- [ ] 2. Update `voice.py` to query and store memories.
 
 ---
 
