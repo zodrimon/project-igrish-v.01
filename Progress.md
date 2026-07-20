@@ -28,7 +28,7 @@ This file is the **single source of truth for "exactly where things stand right 
 Branch: `stage-0/t0.2-python-skeleton`
 Sub-steps:
 - [x] 1. Create `melissa-service/pyproject.toml` with FastAPI and dev dependencies.
-- [ ] 2. Create `melissa-service/app/main.py` with GET `/health` endpoint.
+- [x] 2. Create `melissa-service/app/main.py` with GET `/health` endpoint.
 - [ ] 3. Test running `uvicorn` and verifying the health endpoint.
 
 ---
