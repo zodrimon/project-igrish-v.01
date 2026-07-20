@@ -341,7 +341,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test with mocked Win32 calls; manual test confirms switching windows updates the snapshot within one poll interval.
   Commit: `feat: add active window sensor`
 
-- [ ] **T6.3 — Process list sensor**
+- [x] **T6.3 — Process list sensor**
   Branch: `stage-6/t6.3-process-list-sensor`
   Do: Implement `adapters/sensors/process_list.py`.
   Dependencies: T6.1.

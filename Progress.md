@@ -24,16 +24,18 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T6.3 — Process list sensor
-Branch: `stage-6/t6.3-process-list`
-Sub-steps:
-- [x] 1. Create `app/adapters/sensors/process_list.py`.
-- [x] 2. Create tests.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
+```
+### T6.3 — Process list sensor — COMPLETE
+Branch: stage-6/t6.3-process-list (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Added ProcessListSensor to list unique running process names.
+```
 ```
 ### T6.9 — Wire snapshot into Context Aggregator — COMPLETE
 Branch: stage-6/t6.3-prompt-integration (merged)
