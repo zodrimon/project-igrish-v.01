@@ -383,7 +383,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: for each sensor, verifiably confirm data collection stops when its toggle is off (check the snapshot/logs directly, not just UI state) and resumes when on.
   Commit: `feat: add per-sensor settings toggles with privacy-first defaults`
 
-- [ ] **T6.9 — Wire snapshot into Context Aggregator**
+- [x] **T6.9 — Wire snapshot into Context Aggregator**
   Branch: `stage-6/t6.9-aggregator-wiring`
   Do: Feed the Context Snapshot (T6.1) into the Stage 5 Context Aggregator so conversations can reference current activity.
   Dependencies: T6.1, T5.5.

@@ -24,19 +24,17 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T6.3 — Wire snapshot into system prompt
-Branch: `stage-6/t6.3-prompt-integration`
-Sub-steps:
-- [x] 1. Start snapshot in `app/main.py`.
-- [x] 2. Update `app/memory/context_aggregator.py` to include snapshot state.
-- [x] 3. Create tests.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
-*(Empty. As tasks complete, append a short block here, e.g.:)*
-
+```
+### T6.9 — Wire snapshot into Context Aggregator — COMPLETE
+Branch: stage-6/t6.3-prompt-integration (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: Integrated ContextSnapshot into context aggregator.
 ```
 ### T6.2 — Active window sensor — COMPLETE
 Branch: stage-6/t6.2-active-window-sensor (merged)
