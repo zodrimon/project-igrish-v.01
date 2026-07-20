@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T4.1 — Rolling conversation buffer
-Branch: `stage-4/t4.1-conversation-buffer`
-Sub-steps:
-- [x] 1. Create `app/core/conversation.py`.
-- [x] 2. Update `voice.py` to use buffer.
-- [x] 3. Create `tests/core/test_conversation.py`.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T4.1 — Rolling conversation buffer — COMPLETE
+Branch: stage-4/t4.1-conversation-buffer (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: Added in-memory rolling conversation buffer for short-term context.
+```
 
 ```
 ### T3.8 — Full voice loop integration — COMPLETE
