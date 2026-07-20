@@ -208,7 +208,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: same pattern as T3.3.
   Commit: `feat: add gemini LLM adapter`
 
-- [ ] **T3.6 — Persona prompt builder**
+- [x] **T3.6 — Persona prompt builder**
   Branch: `stage-3/t3.6-prompt-builder`
   Do: Implement `core/prompt_builder.py` centralizing the Melissa persona rules (always call the user "Boss"; calm/concise/supportive tone per `context.md` §2.1) so every provider receives the same persona instructions from one place.
   Dependencies: T3.1.
