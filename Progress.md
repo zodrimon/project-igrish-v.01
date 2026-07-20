@@ -27,9 +27,9 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T3.4 — Claude adapter
 Branch: `stage-3/t3.4-claude-adapter`
 Sub-steps:
-- [ ] 1. Add `anthropic` dependency.
-- [ ] 2. Create `app/adapters/llm/claude.py`.
-- [ ] 3. Create `tests/adapters/llm/test_claude.py`.
+- [x] 1. Add `anthropic` dependency.
+- [x] 2. Create `app/adapters/llm/claude.py`.
+- [x] 3. Create `tests/adapters/llm/test_claude.py`.
 
 ---
 

@@ -14,6 +14,7 @@ dependencies = [
     "keyring",
     "python-dotenv",
     "openai",
+    "anthropic",
 ]
 
 [project.optional-dependencies]
