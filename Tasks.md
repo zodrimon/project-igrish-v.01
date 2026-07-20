@@ -75,7 +75,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: `pnpm tauri dev` opens an empty window with no console errors.
   Commit: `feat: add companion-app tauri skeleton`
 
-- [ ] **T0.4 — CI pipeline**
+- [x] **T0.4 — CI pipeline**
   Branch: `stage-0/t0.4-ci`
   Do: Add `.github/workflows/ci.yml` running lint (`ruff`, `black --check`, `mypy`) + `pytest` for `melissa-service`, and `cargo clippy`/`rustfmt --check` + `pnpm build` for `companion-app`, on every push/PR.
   Dependencies: T0.2, T0.3.
