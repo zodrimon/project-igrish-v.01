@@ -27,9 +27,9 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T5.2 — Semantic memory store
 Branch: `stage-5/t5.2-semantic-store`
 Sub-steps:
-- [ ] 1. Add `chromadb` dependency.
-- [ ] 2. Create `app/memory/store_semantic.py`.
-- [ ] 3. Create `tests/memory/test_semantic.py`.
+- [x] 1. Add `chromadb` dependency.
+- [x] 2. Create `app/memory/store_semantic.py`.
+- [x] 3. Create `tests/memory/test_semantic.py`.
 
 ---
 
