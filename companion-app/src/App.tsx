@@ -18,11 +18,17 @@ function App() {
           const formData = new FormData();
           formData.append("audio", e.data, "chunk.webm");
           try {
-            await fetch("http://127.0.0.1:8000/api/v1/voice/stream", {
+            const res = await fetch("http://127.0.0.1:8000/api/v1/voice/stream", {
               method: "POST",
               body: formData,
             });
-            console.log("Audio chunk sent to server.");
+            console.log("Audio chunk sent to server, status:", res.status);
+            if (res.status === 200) {
+              const blob = await res.blob();
+              const audioUrl = URL.createObjectURL(blob);
+              const audio = new Audio(audioUrl);
+              audio.play().catch(e => console.error("Error playing audio:", e));
+            }
           } catch (err) {
             console.error("Error sending audio chunk:", err);
           }
