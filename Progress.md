@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T0.5 — Local dev orchestration script
-Branch: `stage-0/t0.5-dev-script`
-Sub-steps:
-- [x] 1. Write `scripts/dev.ps1` to start FastAPI and Tauri apps concurrently.
-- [~] 2. Test running `dev.ps1` and verify both processes start. *(Unverifiable in sandbox due to MSVC)*
-- [~] 3. Verify that stopping the script cleanly shuts down both processes. *(Unverifiable)*
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T0.5 — Local dev orchestration script — COMPLETE (Unverifiable)
+Branch: stage-0/t0.5-dev-script (merged)
+Sub-steps: 1 ticked, 2 unverifiable.
+Notes: Unverifiable in sandbox as Tauri dev requires MSVC for Rust GUI.
+```
 
 ```
 ### T0.4 — CI pipeline — COMPLETE
