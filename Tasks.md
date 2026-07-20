@@ -257,7 +257,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test on the timeout logic; manual test confirms a new session starts cleanly after the timeout elapses.
   Commit: `feat: add session lifecycle management`
 
-- [ ] **T4.4 — Barge-in (interrupt) handling**
+- [~] **T4.4 — Barge-in (interrupt) handling**
   Branch: `stage-4/t4.4-barge-in`
   Do: Detect the user speaking again while Melissa's TTS is still playing, stop playback, start a new capture. **This is the hardest task in this stage — if it's not converging, ship Stage 4 without it (mark `[~]` with a clear note) rather than block the rest of the roadmap; revisit later as a backlog item.**
   Dependencies: T2.1, T4.2.
