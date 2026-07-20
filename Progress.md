@@ -27,9 +27,9 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T1.3 — Piper TTS adapter
 Branch: `stage-1/t1.3-piper-adapter`
 Sub-steps:
-- [ ] 1. Install `piper-tts` dependency in `melissa-service`.
-- [ ] 2. Implement `PiperTTSAdapter` in `app/adapters/tts/piper.py`.
-- [ ] 3. Write unit tests to synthesize a string and confirm non-empty output.
+- [x] 1. Install `piper-tts` dependency in `melissa-service`.
+- [x] 2. Implement `PiperTTSAdapter` in `app/adapters/tts/piper.py`.
+- [x] 3. Write unit tests to synthesize a string and confirm non-empty output.
 
 ---
 
