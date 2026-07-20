@@ -55,11 +55,12 @@ async def stream_audio(audio: UploadFile = File(...)):
     from app.core.llm_registry import get_llm_provider
     from app.core.prompt_builder import build_prompt
     from app.core.conversation import global_conversation_buffer
-    from app.core.streaming import chunk_sentences
     from app.core.session import global_session_manager
     from app.memory.store_semantic import global_semantic_store
     from app.core.db import SessionLocal
     from app.models import Turn
+    from app.core.fact_extractor import extract_facts
+    from app.core.streaming import chunk_sentences
     from fastapi.responses import StreamingResponse
     import uuid
     
@@ -77,6 +78,9 @@ async def stream_audio(audio: UploadFile = File(...)):
                 db.add(turn)
                 await db.commit()
     asyncio.create_task(_store_user_turn_sql())
+    
+    # Extract structured facts asynchronously
+    asyncio.create_task(extract_facts(text))
     
     # Query semantic memory for relevant context
     def _query_semantic():
