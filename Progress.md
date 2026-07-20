@@ -27,8 +27,8 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T6.4 — Clipboard sensor
 Branch: `stage-6/t6.4-clipboard-sensor`
 Sub-steps:
-- [ ] 1. Create `app/adapters/sensors/clipboard.py`.
-- [ ] 2. Create tests.
+- [x] 1. Create `app/adapters/sensors/clipboard.py`.
+- [x] 2. Create tests.
 
 ---
 
