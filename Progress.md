@@ -27,8 +27,8 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T6.6 — System state sensor
 Branch: `stage-6/t6.6-system-state-sensor`
 Sub-steps:
-- [ ] 1. Create `app/adapters/sensors/system_state.py`.
-- [ ] 2. Create tests.
+- [x] 1. Create `app/adapters/sensors/system_state.py`.
+- [x] 2. Create tests.
 
 ---
 
