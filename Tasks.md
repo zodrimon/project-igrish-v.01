@@ -299,7 +299,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test with a scripted turn ("I want to finish my AD lab tonight") confirms a matching `goals` row is created; confirm a neutral turn ("what's the weather") creates no spurious rows.
   Commit: `feat: add structured fact extraction from conversation`
 
-- [ ] **T5.5 — Context Aggregator (read path)**
+- [x] **T5.5 — Context Aggregator (read path)**
   Branch: `stage-5/t5.5-context-aggregator`
   Do: Implement `memory/context_aggregator.py`: merges top-k semantic matches + all active structured goals/tasks + a recent-turn window into the prompt, respecting a token budget.
   Dependencies: T5.3, T5.4.

@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T5.5 — Context Aggregator (read path)
-Branch: `stage-5/t5.5-context-aggregator`
-Sub-steps:
-- [x] 1. Create `app/memory/context_aggregator.py`.
-- [x] 2. Fetch structured DB context.
-- [x] 3. Create tests.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T5.5 — Context Aggregator (read path) — COMPLETE
+Branch: stage-5/t5.5-context-aggregator (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: Implemented memory/context_aggregator.py to aggregate structured facts and semantic memories into the system prompt.
+```
 
 ```
 ### T5.4 — Fact extraction step — COMPLETE
