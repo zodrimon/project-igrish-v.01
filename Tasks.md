@@ -96,7 +96,7 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 1 — Basic Voice Assistant (loopback, no AI yet)
 *Goal: prove the raw audio pipeline (STT + TTS) before adding intelligence.*
 
-- [ ] **T1.1 — STT/TTS port interfaces**
+- [x] **T1.1 — STT/TTS port interfaces**
   Branch: `stage-1/t1.1-stt-tts-ports`
   Do: Define `ports/stt.py` (`STTProvider.transcribe(audio) -> str`) and `ports/tts.py` (`TTSProvider.synthesize(text) -> audio`) as abstract interfaces, plus trivial fake/mock implementations for testing.
   Dependencies: T0.2.
