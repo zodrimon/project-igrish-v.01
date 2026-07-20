@@ -290,6 +290,13 @@ This project is being built by an autonomous coding agent (Antigravity, running 
 
 **Current inference constraint:** no local LLM/GPU yet — all LLM calls go through cloud APIs (OpenAI/Claude/Gemini) per §6. A GPU is planned for later, at which point a local-model adapter (Ollama, per §6/§16) becomes viable; nothing in the architecture should be built in a way that assumes a GPU exists until that upgrade actually happens.
 
+## 19. Version Control & Commit Guidelines
+
+- **Write commits like a human.** Avoid overly robotic or "AI-vibed" commit messages.
+- If you create something new, simply say: `created [thing]`.
+- If you update something, simply say: `updated [thing]`.
+- Keep it natural, concise, and direct (e.g., `updated fast api endpoint for wake word`, `created pocketsphinx sensor`, `fixed bug in audio playback`).
+
 ---
 
 *This file is a living document. Update it whenever an architectural decision changes — do not let `tasks.md` and reality drift ahead of what's written here.*
