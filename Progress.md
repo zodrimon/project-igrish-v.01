@@ -24,17 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T4.2 — Sentence-level streaming TTS
-Branch: `stage-4/t4.2-streaming-tts`
-Sub-steps:
-- [x] 1. Add sentence chunker utility.
-- [x] 2. Update `TTSProvider` and `voice.py` to stream audio.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T4.2 — Sentence-level streaming TTS — COMPLETE
+Branch: stage-4/t4.2-streaming-tts (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Added streaming TTS, yielding audio chunks as the LLM generates sentences.
+```
 
 ```
 ### T4.1 — Rolling conversation buffer — COMPLETE
