@@ -292,7 +292,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: after a live conversation, confirm turns appear in both stores with matching content/timestamps.
   Commit: `feat: persist conversation turns to structured and semantic memory`
 
-- [ ] **T5.4 — Fact extraction step**
+- [x] **T5.4 — Fact extraction step**
   Branch: `stage-5/t5.4-fact-extraction`
   Do: Implement an explicit extraction step (LLM call with a narrow, structured-output prompt) that proposes structured facts (new goal, preference, completed task) from a turn, written to the structured store only after this explicit step — never inferred silently elsewhere.
   Dependencies: T5.1, T3.6.

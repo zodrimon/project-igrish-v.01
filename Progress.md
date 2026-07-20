@@ -24,18 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T5.4 — Fact extraction step
-Branch: `stage-5/t5.4-fact-extraction`
-Sub-steps:
-- [x] 1. Create `app/core/fact_extractor.py`.
-- [x] 2. Integrate into `voice.py` asynchronously.
-- [x] 3. Create tests for fact extraction.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T5.4 — Fact extraction step — COMPLETE
+Branch: stage-5/t5.4-fact-extraction (merged)
+Sub-steps: 3 ticked, PR merged.
+Notes: Added async fact extraction from user turns to populate SQL structured memory.
+```
 
 ```
 ### T5.3 — Verbatim turn write path — COMPLETE
