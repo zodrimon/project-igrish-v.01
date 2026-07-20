@@ -27,8 +27,8 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T4.2 — Sentence-level streaming TTS
 Branch: `stage-4/t4.2-streaming-tts`
 Sub-steps:
-- [ ] 1. Add sentence chunker utility.
-- [ ] 2. Update `TTSProvider` and `voice.py` to stream audio.
+- [x] 1. Add sentence chunker utility.
+- [x] 2. Update `TTSProvider` and `voice.py` to stream audio.
 
 ---
 

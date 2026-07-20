@@ -1,6 +1,7 @@
 import io
 import wave
 import asyncio
+from typing import AsyncGenerator
 from piper import PiperVoice
 from app.ports.tts import TTSProvider
 from huggingface_hub import hf_hub_download
@@ -36,3 +37,39 @@ class PiperTTSAdapter(TTSProvider):
         # Run CPU-bound synthesis in a separate thread
         audio_bytes = await asyncio.to_thread(_synthesize_sync)
         return audio_bytes
+
+    async def synthesize_stream(self, text_stream: AsyncGenerator[str, None]) -> AsyncGenerator[bytes, None]:
+        """Synthesize a stream of text chunks into a continuous WAV stream."""
+        # For simplicity, we yield a dummy WAV header first, then PCM chunks.
+        # This allows the client to stream the audio continuously.
+        first_chunk_yielded = False
+        
+        async for sentence in text_stream:
+            def _synthesize_sentence_sync():
+                chunks = []
+                for chunk in self.voice.synthesize(sentence):
+                    chunks.append(chunk)
+                return chunks
+                
+            audio_chunks = await asyncio.to_thread(_synthesize_sentence_sync)
+            
+            for chunk in audio_chunks:
+                if not first_chunk_yielded:
+                    # Yield WAV header
+                    with io.BytesIO() as wav_io:
+                        with wave.open(wav_io, "wb") as wav_file:
+                            wav_file.setnchannels(chunk.sample_channels)
+                            wav_file.setsampwidth(chunk.sample_width)
+                            wav_file.setframerate(chunk.sample_rate)
+                            # Write dummy frame to force header generation
+                            wav_file.writeframes(b'\x00' * (chunk.sample_channels * chunk.sample_width))
+                        header = wav_io.getvalue()
+                        # The standard wave module writes the actual data size. 
+                        # To trick the browser, we should ideally patch the size, 
+                        # but often just sending the header followed by PCM works for simple players.
+                        # Let's patch the size in the RIFF header to 0xFFFFFFFF
+                        patched_header = header[:4] + b'\xff\xff\xff\xff' + header[8:40] + b'\xff\xff\xff\xff' + header[44:]
+                        yield patched_header
+                    first_chunk_yielded = True
+                    
+                yield chunk.audio_int16_bytes

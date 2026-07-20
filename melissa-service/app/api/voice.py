@@ -55,21 +55,26 @@ async def stream_audio(audio: UploadFile = File(...)):
     from app.core.llm_registry import get_llm_provider
     from app.core.prompt_builder import build_prompt
     from app.core.conversation import global_conversation_buffer
+    from app.core.streaming import chunk_sentences
+    from fastapi.responses import StreamingResponse
     
     llm_provider = get_llm_provider()
     history = global_conversation_buffer.get_history()
     messages = build_prompt(text, conversation_history=history)
     
-    llm_response_chunks = []
-    async for chunk in llm_provider.generate(messages, stream=False):
-        llm_response_chunks.append(chunk)
-        
-    llm_text = "".join(llm_response_chunks)
-    logger.info(f"LLM Response: '{llm_text}'")
+    llm_stream = llm_provider.generate(messages, stream=True)
+    sentence_stream = chunk_sentences(llm_stream)
     
-    global_conversation_buffer.add_turn(text, llm_text)
+    # We must also capture the full LLM response to add to history.
+    # To do this cleanly while streaming, we can wrap the generator.
+    async def wrapped_sentence_stream():
+        full_text = []
+        async for sentence in sentence_stream:
+            full_text.append(sentence)
+            yield sentence
         
-    audio_bytes = await tts_adapter.synthesize(llm_text)
-    logger.info(f"Synthesized audio: {len(audio_bytes)} bytes")
+        global_conversation_buffer.add_turn(text, " ".join(full_text))
+        
+    audio_stream = tts_adapter.synthesize_stream(wrapped_sentence_stream())
     
-    return Response(content=audio_bytes, media_type="audio/wav")
+    return StreamingResponse(audio_stream, media_type="audio/wav")
