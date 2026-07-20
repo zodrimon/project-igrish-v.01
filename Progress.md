@@ -24,16 +24,20 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T5.6 — Wire aggregator into the live conversation loop
-Branch: `stage-5/t5.6-aggregator-integration`
-Sub-steps:
-- [x] 1. Update `voice.py` to use `build_augmented_prompt`.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
 *(Empty. As tasks complete, append a short block here, e.g.:)*
+
+```
+### T5.6 — Wire aggregator into the live conversation loop — COMPLETE
+Branch: stage-5/t5.6-aggregator-integration (merged)
+Sub-steps: 1 ticked, PR merged.
+Notes: Replaced plain prompt with the context aggregator in voice.py.
+```
 
 ```
 ### T5.5 — Context Aggregator (read path) — COMPLETE

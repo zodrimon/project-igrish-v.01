@@ -306,7 +306,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test with fixed fake data confirms correct merge/ranking/truncation under a small token budget.
   Commit: `feat: add context aggregator for memory-augmented prompts`
 
-- [ ] **T5.6 — Wire aggregator into the live conversation loop**
+- [x] **T5.6 — Wire aggregator into the live conversation loop**
   Branch: `stage-5/t5.6-aggregator-integration`
   Do: Replace the plain prompt from Stage 4 with the aggregator's memory-augmented prompt in the live voice loop.
   Dependencies: T5.5, T4.1.
