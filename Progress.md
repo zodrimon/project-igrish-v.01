@@ -24,16 +24,18 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T6.6 — System state sensor
-Branch: `stage-6/t6.6-system-state-sensor`
-Sub-steps:
-- [x] 1. Create `app/adapters/sensors/system_state.py`.
-- [x] 2. Create tests.
+`(none — read tasks.md for the next unchecked task)`
 
 ---
 
 ## History (completed tasks — most recent first)
 
+```
+### T6.6 — System state sensor — COMPLETE
+Branch: stage-6/t6.6-system-state-sensor (merged)
+Sub-steps: 2 ticked, PR merged.
+Notes: Added SystemStateSensor using psutil to check CPU and memory.
+```
 ```
 ### T6.5 — Input activity sensor — COMPLETE
 Branch: stage-6/t6.5-input-activity-sensor (merged)

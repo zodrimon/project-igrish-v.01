@@ -362,7 +362,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: manual test confirms idle time increments correctly after ceasing input and resets on resuming.
   Commit: `feat: add input activity sensor`
 
-- [ ] **T6.6 — System state sensor**
+- [x] **T6.6 — System state sensor**
   Branch: `stage-6/t6.6-system-state-sensor`
   Do: Implement `adapters/sensors/system_state.py` (CPU/system load).
   Dependencies: T6.1.
