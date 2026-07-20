@@ -24,7 +24,12 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T4.1 — Rolling conversation buffer
+Branch: `stage-4/t4.1-conversation-buffer`
+Sub-steps:
+- [ ] 1. Create `app/core/conversation.py`.
+- [ ] 2. Update `voice.py` to use buffer.
+- [ ] 3. Create `tests/core/test_conversation.py`.
 
 ---
 
