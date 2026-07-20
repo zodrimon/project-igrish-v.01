@@ -27,9 +27,9 @@ This file is the **single source of truth for "exactly where things stand right 
 ### T1.1 — STT/TTS port interfaces
 Branch: `stage-1/t1.1-stt-tts-ports`
 Sub-steps:
-- [ ] 1. Define `STTProvider` interface in `app/ports/stt.py` and a mock adapter.
-- [ ] 2. Define `TTSProvider` interface in `app/ports/tts.py` and a mock adapter.
-- [ ] 3. Write unit tests for the mock adapters.
+- [x] 1. Define `STTProvider` interface in `app/ports/stt.py` and a mock adapter.
+- [x] 2. Define `TTSProvider` interface in `app/ports/tts.py` and a mock adapter.
+- [x] 3. Write unit tests for the mock adapters.
 
 ---
 
