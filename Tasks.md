@@ -82,7 +82,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: a PR with a trivial passing test shows green CI; a PR with a deliberately broken lint rule shows red CI (verify both, then revert the deliberate break).
   Commit: `chore: add CI workflow for both apps`
 
-- [ ] **T0.5 — Local dev orchestration script**
+- [~] **T0.5 — Local dev orchestration script**
   Branch: `stage-0/t0.5-dev-script`
   Do: Write `scripts/dev.ps1` (and/or `dev.sh`) that starts `uvicorn` and `pnpm tauri dev` together, with clear console output labeling which process is which.
   Dependencies: T0.2, T0.3.
