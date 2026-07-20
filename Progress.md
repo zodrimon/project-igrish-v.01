@@ -31,7 +31,7 @@ Sub-steps:
 - [x] 2. Create `melissa-service` directory structure (`app/core`, `ports`, `adapters/llm`, `tts`, `stt`, `sensors`, `memory`, `plugins`, `api`, `tests`).
 - [x] 3. Create `shared`, `docs`, `scripts`, `.github/workflows`, and `docker` folders.
 - [x] 4. Add `.gitkeep` placeholder files to all empty directories.
-- [ ] 5. Verify directory structure matches `context.md` §4.
+- [x] 5. Verify directory structure matches `context.md` §4.
 
 ---
 
