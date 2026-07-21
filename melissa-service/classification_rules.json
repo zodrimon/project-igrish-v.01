@@ -1,0 +1,31 @@
+{
+  "coding": [
+    "code.exe",
+    "pycharm64.exe",
+    "devenv.exe",
+    "idea64.exe",
+    "windows terminal",
+    "powershell.exe",
+    "cmd.exe",
+    "github desktop"
+  ],
+  "communication": [
+    "slack.exe",
+    "discord.exe",
+    "teams.exe",
+    "zoom.exe",
+    "outlook.exe"
+  ],
+  "distraction": [
+    "youtube",
+    "twitter",
+    "reddit",
+    "netflix",
+    "spotify.exe"
+  ],
+  "documentation": [
+    "notion.exe",
+    "obsidian.exe",
+    "evernote.exe"
+  ]
+}

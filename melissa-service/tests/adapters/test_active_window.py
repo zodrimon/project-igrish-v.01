@@ -8,6 +8,6 @@ def test_active_window_sensor():
     state = sensor.get_current_state()
     # It might run headless or without a foreground window, so we just verify the structure
     assert isinstance(state, dict)
-    assert "title" in state
-    assert "process" in state
-    # Either it gets the window or returns None if no foreground window exists
+    assert "window_title" in state
+    assert "process_name" in state
+    assert "category" in state
