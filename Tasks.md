@@ -397,7 +397,7 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 7 — Productivity Companion
 *Goal: contextual, non-repetitive proactive nudges, per `context.md` §3.4/§7.*
 
-- [ ] **T7.1 — Nudge cooldown log**
+- [x] **T7.1 — Nudge cooldown log**
   Branch: `stage-7/t7.1-nudge-cooldown-log`
   Do: Implement `memory/nudge_log.py` backed by the `nudge_log` SQL table — records nudge category + timestamp + cooldown-until.
   Dependencies: T5.1.
