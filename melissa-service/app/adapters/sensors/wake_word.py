@@ -13,6 +13,8 @@ class WakeWordSensor:
         
         # Configure pocketsphinx for keyword spotting
         config = Decoder.default_config()
+        # Must unset -lm if it was auto-populated by default_config
+        config.set_string('-lm', None)
         config.set_string('-keyphrase', self.keyword)
         config.set_float('-kws_threshold', self.threshold)
         config.set_string('-logfn', 'nul') # suppress C level logs on windows
@@ -28,18 +30,22 @@ class WakeWordSensor:
         if self._running:
             return
             
-        self.stream = self.pa.open(
-            format=pyaudio.paInt16,
-            channels=1,
-            rate=16000,
-            input=True,
-            frames_per_buffer=2048
-        )
-        self.decoder.start_utt()
-        self._running = True
-        self._thread = threading.Thread(target=self._listen_loop, daemon=True)
-        self._thread.start()
-        logger.info(f"Wake word sensor started. Listening for '{self.keyword}'")
+        try:
+            self.stream = self.pa.open(
+                format=pyaudio.paInt16,
+                channels=1,
+                rate=16000,
+                input=True,
+                frames_per_buffer=2048
+            )
+            self.decoder.start_utt()
+            self._running = True
+            self._thread = threading.Thread(target=self._listen_loop, daemon=True)
+            self._thread.start()
+            logger.info(f"Wake word sensor started. Listening for '{self.keyword}'")
+        except Exception as e:
+            logger.error(f"Failed to start wake word sensor: {e}")
+            self._running = False
         
     def stop(self):
         self._running = False
