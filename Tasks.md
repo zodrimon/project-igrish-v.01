@@ -404,7 +404,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test confirms a nudge category logged now correctly reports "on cooldown" until its window elapses.
   Commit: `feat: add nudge cooldown log`
 
-- [ ] **T7.2 — Heuristic decision loop (no LLM yet)**
+- [x] **T7.2 — Heuristic decision loop (no LLM yet)**
   Branch: `stage-7/t7.2-decision-loop-heuristics`
   Do: Implement `core/decision_loop.py`: a background loop evaluating cheap heuristics on the Context Snapshot + active structured goals (e.g., N minutes in "distraction" category + an open same-day goal) to *decide whether* to nudge — deliberately no LLM call in this task, decision logic only.
   Dependencies: T6.9, T5.1, T7.1.
