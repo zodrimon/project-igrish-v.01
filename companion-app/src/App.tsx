@@ -125,6 +125,14 @@ function App() {
     saveSettings("nudge.mute_categories", e.target.value);
   };
 
+  const triggerBriefing = async () => {
+    try {
+      await fetch("http://127.0.0.1:8000/api/v1/voice/briefing", { method: "POST" });
+    } catch (err) {
+      console.error("Failed to trigger briefing:", err);
+    }
+  };
+
   return (
     <main className="container">
       <h1>Melissa Companion</h1>
@@ -149,8 +157,12 @@ function App() {
         {!isRecording && wakeWordEnabled && <p>Say "Melissa" to wake up and start talking.</p>}
         {!isRecording && !wakeWordEnabled && <p>Wake word disabled.</p>}
         
-        <button onMouseDown={startRecording} onMouseUp={stopRecording} onMouseLeave={stopRecording} style={{ marginTop: "1rem" }}>
+        <button onMouseDown={startRecording} onMouseUp={stopRecording} onMouseLeave={stopRecording} style={{ marginTop: "1rem", marginRight: "1rem" }}>
           Manual Push to Talk
+        </button>
+
+        <button onClick={triggerBriefing} style={{ marginTop: "1rem", backgroundColor: "#0078D7" }}>
+          Trigger Daily Briefing
         </button>
 
         <hr style={{ margin: "2rem 0" }} />

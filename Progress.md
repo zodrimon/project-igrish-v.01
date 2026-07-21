@@ -24,7 +24,13 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-(none — read tasks.md for the next unchecked task)
+### T8.2 — Briefing prompt + manual trigger
+Branch: `stage-8/t8.2-briefing-prompt-manual`
+Sub-steps:
+- [x] 1. Add `build_briefing_prompt(briefing_data)` to `app/core/prompt_builder.py`.
+- [x] 2. Add `POST /api/v1/voice/briefing` endpoint to generate briefing text using LLM and push to SSE queue as `NUDGE_AUDIO:`.
+- [x] 3. Update `companion-app` to include a "Daily Briefing" manual trigger button.
+- [x] 4. Update LLM stream logic to handle "brief me" voice command to trigger the briefing.
 
 ---
 

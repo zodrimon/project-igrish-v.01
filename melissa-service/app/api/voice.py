@@ -66,6 +66,12 @@ async def stream_audio(audio: UploadFile = File(...)):
     if not text or text.strip().lower() in ("", "[silence]", "[blank audio]"):
         return Response(status_code=204)
         
+    # Intercept "brief me"
+    if "brief me" in text.lower():
+        # Trigger briefing manually
+        asyncio.create_task(_trigger_briefing())
+        return Response(status_code=204)
+        
     from app.core.llm_registry import get_llm_provider
     from app.core.prompt_builder import build_prompt
     from app.core.conversation import global_conversation_buffer
@@ -137,3 +143,32 @@ async def stream_audio(audio: UploadFile = File(...)):
     audio_stream = tts_adapter.synthesize_stream(wrapped_sentence_stream())
     
     return StreamingResponse(audio_stream, media_type="audio/wav")
+
+async def _trigger_briefing():
+    from app.core.briefing import pull_briefing_data
+    from app.core.prompt_builder import build_briefing_prompt
+    from app.core.llm_registry import get_llm_provider
+    
+    try:
+        data = await pull_briefing_data()
+        messages = build_briefing_prompt(data)
+        
+        llm = get_llm_provider()
+        llm_stream = llm.generate(messages, stream=False)
+        
+        briefing_text = ""
+        async for chunk in llm_stream:
+            briefing_text += chunk
+            
+        briefing_text = briefing_text.strip()
+        if briefing_text:
+            logger.info(f"Generated briefing: {briefing_text}")
+            wake_word_event_queue.put_nowait(f"NUDGE_AUDIO:{briefing_text}")
+    except Exception as e:
+        logger.error(f"Failed to generate briefing: {e}")
+
+@router.post("/briefing")
+async def trigger_briefing():
+    """Manually trigger the daily briefing."""
+    asyncio.create_task(_trigger_briefing())
+    return {"status": "briefing started"}
