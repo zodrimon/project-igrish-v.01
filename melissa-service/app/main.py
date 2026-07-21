@@ -28,7 +28,7 @@ async def lifespan(app: FastAPI):
     # Initialize snapshot
     global_context_snapshot.register_sensor(ActiveWindowSensor())
     global_context_snapshot.register_sensor(ProcessListSensor())
-    global_context_snapshot.register_sensor(ClipboardSensor(enabled=False))
+    global_context_snapshot.register_sensor(ClipboardSensor())
     global_context_snapshot.register_sensor(InputActivitySensor())
     global_context_snapshot.register_sensor(SystemStateSensor())
     global_context_snapshot.start(interval_seconds=2.0)
