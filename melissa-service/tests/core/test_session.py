@@ -11,12 +11,12 @@ async def test_session_lifecycle():
     assert len(global_conversation_buffer.get_history()) == 2
     
     manager = SessionManager(timeout_seconds=0.1)
-    manager.ping()
+    await manager.ping()
     assert manager._is_active is True
     
     # Wait less than timeout, should still be active
     await asyncio.sleep(0.05)
-    manager.ping() # Reset timeout
+    await manager.ping() # Reset timeout
     assert manager._is_active is True
     assert len(global_conversation_buffer.get_history()) == 2
     

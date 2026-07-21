@@ -14,8 +14,13 @@ class InputActivitySensor(ContextSensor):
     def name(self) -> str:
         return "input_activity"
         
-    def get_current_state(self) -> Dict[str, Any]:
+    def get_current_state(self, preferences: Dict[str, str] = None) -> Dict[str, Any]:
         """Returns the idle time in seconds using Win32 API."""
+        prefs = preferences or {}
+        enabled = prefs.get("sensor.input_activity.enabled", "true").lower() == "true"
+        if not enabled:
+            return {"enabled": False, "idle_seconds": 0, "is_active": True}
+            
         try:
             lii = LASTINPUTINFO()
             lii.cbSize = ctypes.sizeof(LASTINPUTINFO)
@@ -25,8 +30,9 @@ class InputActivitySensor(ContextSensor):
                 idle_seconds = millis / 1000.0
                 return {
                     "idle_seconds": round(idle_seconds, 1),
-                    "is_active": idle_seconds < 60.0
+                    "is_active": idle_seconds < 60.0,
+                    "enabled": True
                 }
-            return {"idle_seconds": 0, "is_active": True}
+            return {"enabled": True, "idle_seconds": 0, "is_active": True}
         except Exception as e:
-            return {"idle_seconds": 0, "is_active": True, "error": str(e)}
+            return {"enabled": True, "idle_seconds": 0, "is_active": True, "error": str(e)}

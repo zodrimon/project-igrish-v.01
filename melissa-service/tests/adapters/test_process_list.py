@@ -5,7 +5,7 @@ def test_process_list_sensor():
     sensor = ProcessListSensor()
     assert sensor.name == "running_processes"
     
-    state = sensor.get_current_state()
+    state = sensor.get_current_state({"sensor.running_processes.enabled": "true"})
     assert isinstance(state, dict)
     assert "count" in state
     assert "processes" in state

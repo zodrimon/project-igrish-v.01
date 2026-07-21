@@ -9,8 +9,15 @@ class ActiveWindowSensor(ContextSensor):
     def name(self) -> str:
         return "active_window"
         
-    def get_current_state(self) -> Dict[str, Any]:
+    def get_current_state(self, preferences: Dict[str, str] = None) -> Dict[str, Any]:
         """Returns the title and process name of the active window using Win32 API."""
+        prefs = preferences or {}
+        enabled = prefs.get("sensor.active_window.enabled", "true").lower() == "true"
+        if not enabled:
+            return {"enabled": False, "process_name": None, "window_title": None, "category": "unknown"}
+            
+        detailed = prefs.get("sensor.active_window.detailed", "false").lower() == "true"
+        
         try:
             hwnd = ctypes.windll.user32.GetForegroundWindow()
             if not hwnd:
@@ -35,9 +42,10 @@ class ActiveWindowSensor(ContextSensor):
             category = classifier.classify(process_name, title)
                 
             return {
-                "process_name": process_name,
-                "window_title": title,
+                "enabled": True,
+                "process_name": process_name if detailed else None,
+                "window_title": title if detailed else None,
                 "category": category
             }
         except Exception as e:
-            return {"process_name": None, "window_title": None, "category": "unknown", "error": str(e)}
+            return {"enabled": True, "process_name": None, "window_title": None, "category": "unknown", "error": str(e)}
