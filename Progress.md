@@ -24,13 +24,23 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T9.4 — Scoped documentation search tool
-Branch: `stage-9/t9.4-doc-search-tool`
+### T9.5 — Focus-mode gating (shared with nudges)
+Branch: `stage-9/t9.5-focus-mode-gating`
 Sub-steps:
-- [x] 1. Add `duckduckgo-search` to `pyproject.toml` and install it.
-- [x] 2. Create `app/plugins/search_tool.py` providing a basic `search_docs` function.
-- [x] 3. Update `voice.py` to intercept "search docs for X" or "search documentation for X".
-- [x] 4. Inject search results into LLM prompt so Melissa can summarize the answer.
+- [x] 1. Add `_active_seconds` to `ContextSnapshot` and `focus_mode` to snapshot state.
+- [x] 2. Update `decision_loop.py` to abort heuristic nudges and plugin triggers if `focus_mode` is active.
+- [x] 3. Refactor decision loop prompt construction to handle arbitrary plugin nudge strings vs distraction dicts.
+
+---
+
+## History (completed tasks — most recent first)
+
+```
+### T9.4 — Scoped documentation search tool — COMPLETE
+Branch: stage-9/t9.4-doc-search-tool (merged)
+Sub-steps: 4 ticked.
+Notes: Added duckduckgo-search and intercepted search docs.
+```
 
 ---
 

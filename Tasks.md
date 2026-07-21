@@ -488,7 +488,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: manual test — a documentation question during a coding session returns a relevant, correctly scoped result.
   Commit: `feat: add scoped documentation search tool`
 
-- [ ] **T9.5 — Focus-mode gating (shared with nudges)**
+- [x] **T9.5 — Focus-mode gating (shared with nudges)**
   Branch: `stage-9/t9.5-focus-mode-gating`
   Do: Implement a focus-mode signal (sustained typing activity + no idle gaps) as a shared piece of the Context Snapshot, and gate *both* the coding plugin's proactive suggestions and the Stage 7 nudge decision loop behind it — implement once, reference from both, per `context.md` §11.
   Dependencies: T9.2, T7.2, T6.5.
