@@ -32,14 +32,27 @@ pub fn run() {
         .plugin(tauri_plugin_opener::init())
         .setup(|app| {
             let mut service_path = app.path().resource_dir().unwrap();
-            service_path.push("melissa-service");
-            service_path.push("melissa-service.exe");
             
-            println!("Starting backend service at {:?}", service_path);
+            let mut possible_path_1 = service_path.clone();
+            possible_path_1.push("melissa-service");
+            possible_path_1.push("melissa-service.exe");
             
-            if service_path.exists() {
+            let mut possible_path_2 = service_path.clone();
+            possible_path_2.push("melissa-service.exe");
+
+            let target_path = if possible_path_1.exists() {
+                possible_path_1
+            } else if possible_path_2.exists() {
+                possible_path_2
+            } else {
+                possible_path_2 // Default to fallback for logging
+            };
+            
+            println!("Starting backend service at {:?}", target_path);
+            
+            if target_path.exists() {
                 // In production, start the service
-                match Command::new(&service_path).spawn() {
+                match Command::new(&target_path).spawn() {
                     Ok(child) => {
                         println!("Started backend service with PID: {}", child.id());
                         app.manage(BackendProcess { child: Some(child) });
@@ -49,7 +62,7 @@ pub fn run() {
                     }
                 }
             } else {
-                println!("Backend service not found at {:?}, assuming dev mode.", service_path);
+                println!("Backend service not found at {:?}, assuming dev mode.", target_path);
             }
             
             let quit_i = MenuItem::with_id(app, "quit", "Quit", true, None::<&str>).unwrap();
