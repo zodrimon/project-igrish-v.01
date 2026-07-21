@@ -4,6 +4,8 @@ import "./App.css";
 function App() {
   const [isRecording, setIsRecording] = useState(false);
   const [wakeWordEnabled, setWakeWordEnabled] = useState(true);
+  const [nudgeSensitivity, setNudgeSensitivity] = useState("normal");
+  const [nudgeMuteCategories, setNudgeMuteCategories] = useState("");
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
 
   const toggleWakeWord = async () => {
@@ -90,6 +92,39 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    // Load settings on mount
+    fetch("http://127.0.0.1:8000/api/v1/settings")
+      .then(res => res.json())
+      .then(data => {
+        if (data["nudge.sensitivity"]) setNudgeSensitivity(data["nudge.sensitivity"]);
+        if (data["nudge.mute_categories"]) setNudgeMuteCategories(data["nudge.mute_categories"]);
+      })
+      .catch(err => console.error("Failed to load settings", err));
+  }, []);
+
+  const saveSettings = async (key: string, value: string) => {
+    try {
+      await fetch("http://127.0.0.1:8000/api/v1/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ settings: { [key]: value } })
+      });
+    } catch (err) {
+      console.error("Failed to save settings", err);
+    }
+  };
+
+  const handleSensitivityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setNudgeSensitivity(e.target.value);
+    saveSettings("nudge.sensitivity", e.target.value);
+  };
+
+  const handleMuteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNudgeMuteCategories(e.target.value);
+    saveSettings("nudge.mute_categories", e.target.value);
+  };
+
   return (
     <main className="container">
       <h1>Melissa Companion</h1>
@@ -117,6 +152,30 @@ function App() {
         <button onMouseDown={startRecording} onMouseUp={stopRecording} onMouseLeave={stopRecording} style={{ marginTop: "1rem" }}>
           Manual Push to Talk
         </button>
+
+        <hr style={{ margin: "2rem 0" }} />
+        
+        <h3>Nudge Settings</h3>
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px", alignItems: "center" }}>
+          <div>
+            <label htmlFor="nudgeSensitivity">Sensitivity: </label>
+            <select id="nudgeSensitivity" value={nudgeSensitivity} onChange={handleSensitivityChange}>
+              <option value="normal">Normal</option>
+              <option value="gentle">Gentle</option>
+              <option value="off">Off</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="nudgeMuteCategories">Mute Categories (comma-separated): </label>
+            <input 
+              type="text" 
+              id="nudgeMuteCategories" 
+              value={nudgeMuteCategories} 
+              onChange={handleMuteChange}
+              placeholder="e.g. social, news"
+            />
+          </div>
+        </div>
       </div>
     </main>
   );

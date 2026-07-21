@@ -24,7 +24,14 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-(none — read tasks.md for the next unchecked task)
+### T7.4 — Nudge settings panel
+Branch: `stage-7/t7.4-nudge-settings`
+Sub-steps:
+- [x] 1. Add `nudge.sensitivity` and `nudge.mute_categories` preferences in DB.
+- [x] 2. Update `DecisionLoop` to read these preferences and suppress nudges if sensitivity is "off" or category is muted.
+- [x] 3. Update `DecisionLoop` thresholds based on sensitivity (gentle vs normal).
+- [x] 4. Add UI in `companion-app` to configure these settings.
+- [x] 5. Write unit tests for the settings logic in `DecisionLoop`.
 
 ---
 

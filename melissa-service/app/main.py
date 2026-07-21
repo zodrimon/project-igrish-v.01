@@ -51,6 +51,8 @@ app.add_middleware(
 )
 
 app.include_router(voice.router)
+from app.api import settings
+app.include_router(settings.router)
 
 
 @app.get("/health")

@@ -40,21 +40,38 @@ class DecisionLoop:
             if self._distraction_start_time is None:
                 self._distraction_start_time = time.time()
                 
-            elapsed = time.time() - self._distraction_start_time
-            if elapsed >= self.distraction_threshold_seconds:
-                # Check if we have an active goal
-                async with SessionLocal() as session:
+            # Read preferences
+            async with SessionLocal() as session:
+                from app.models import Preference
+                prefs_result = await session.execute(select(Preference).where(Preference.key.like("nudge.%")))
+                prefs = {p.key: p.value for p in prefs_result.scalars()}
+                
+                sensitivity = prefs.get("nudge.sensitivity", "normal")
+                mute_categories = prefs.get("nudge.mute_categories", "").split(",")
+                
+                if sensitivity == "off" or category in [c.strip() for c in mute_categories if c.strip()]:
+                    self._distraction_start_time = None
+                    return None
+                    
+                # Adjust threshold based on sensitivity
+                adjusted_threshold = self.distraction_threshold_seconds
+                if sensitivity == "gentle":
+                    adjusted_threshold *= 2.0  # Wait twice as long
+                    
+                elapsed = time.time() - self._distraction_start_time
+                if elapsed >= adjusted_threshold:
+                    # Check if we have an active goal
                     result = await session.execute(select(Goal).where(Goal.status == "active").limit(1))
                     active_goal = result.scalar_one_or_none()
                     
-                if active_goal:
-                    # Check cooldown
-                    if not await NudgeLogManager.is_on_cooldown("distraction"):
-                        # We would trigger here.
-                        # Reset tracking so we don't immediately trigger again if cooldown logic is bypassed or short
-                        self._distraction_start_time = None
-                        
-                        return {
+                    if active_goal:
+                        # Check cooldown
+                        if not await NudgeLogManager.is_on_cooldown("distraction"):
+                            # We would trigger here.
+                            # Reset tracking so we don't immediately trigger again if cooldown logic is bypassed or short
+                            self._distraction_start_time = None
+                            
+                            return {
                             "nudge_type": "distraction",
                             "goal_description": active_goal.description,
                             "app_name": active_window_data.get("app_name")
