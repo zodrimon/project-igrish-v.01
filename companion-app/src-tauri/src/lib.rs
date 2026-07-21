@@ -51,8 +51,11 @@ pub fn run() {
             println!("Starting backend service at {:?}", target_path);
             
             if target_path.exists() {
+                let data_dir = app.path().app_local_data_dir().unwrap();
+                std::fs::create_dir_all(&data_dir).unwrap_or_else(|e| eprintln!("Failed to create data dir: {}", e));
+                
                 // In production, start the service
-                match Command::new(&target_path).spawn() {
+                match Command::new(&target_path).current_dir(&data_dir).spawn() {
                     Ok(child) => {
                         println!("Started backend service with PID: {}", child.id());
                         app.manage(BackendProcess { child: Some(child) });
