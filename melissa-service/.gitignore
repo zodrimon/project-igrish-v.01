@@ -7,3 +7,7 @@ dist/
 *.spec
 melissa.db
 alembic.ini
+chroma_db/
+logs/
+*.sqlite3
+test_chroma_db/

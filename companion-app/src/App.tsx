@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
+import SetupWizard from "./components/SetupWizard";
 
 function App() {
+  const [setupComplete, setSetupComplete] = useState<boolean | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [wakeWordEnabled, setWakeWordEnabled] = useState(true);
   const [nudgeSensitivity, setNudgeSensitivity] = useState("normal");
@@ -97,10 +99,18 @@ function App() {
     fetch("http://127.0.0.1:8000/api/v1/settings")
       .then(res => res.json())
       .then(data => {
+        if (data["setup_complete"] === "true") {
+          setSetupComplete(true);
+        } else {
+          setSetupComplete(false);
+        }
         if (data["nudge.sensitivity"]) setNudgeSensitivity(data["nudge.sensitivity"]);
         if (data["nudge.mute_categories"]) setNudgeMuteCategories(data["nudge.mute_categories"]);
       })
-      .catch(err => console.error("Failed to load settings", err));
+      .catch(err => {
+        console.error("Failed to load settings", err);
+        setSetupComplete(false);
+      });
   }, []);
 
   const saveSettings = async (key: string, value: string) => {
@@ -132,6 +142,14 @@ function App() {
       console.error("Failed to trigger briefing:", err);
     }
   };
+
+  if (setupComplete === null) {
+    return <main className="container"><h1>Loading...</h1></main>;
+  }
+
+  if (setupComplete === false) {
+    return <SetupWizard onComplete={() => setSetupComplete(true)} />;
+  }
 
   return (
     <main className="container">

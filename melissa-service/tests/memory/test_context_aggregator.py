@@ -34,7 +34,7 @@ async def test_build_augmented_prompt_with_snapshot(monkeypatch):
     class FakeSensor(ContextSensor):
         @property
         def name(self): return "active_window"
-        def get_current_state(self): return {"title": "VS Code", "process": "Code.exe"}
+        def get_current_state(self, preferences=None): return {"title": "VS Code", "process": "Code.exe"}
         
     global_context_snapshot._sensors.clear()
     global_context_snapshot.register_sensor(FakeSensor())
