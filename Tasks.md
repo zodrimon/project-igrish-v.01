@@ -376,7 +376,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test confirms known apps classify correctly and unknown apps fall back to `unknown` without erroring.
   Commit: `feat: add app/window classification table`
 
-- [ ] **T6.8 — Per-sensor settings toggles**
+- [x] **T6.8 — Per-sensor settings toggles**
   Branch: `stage-6/t6.8-sensor-toggles`
   Do: Add individual settings toggles for each sensor from T6.2–T6.6, defaulting to the least-invasive set enabled (active app category + idle time only; clipboard/window-title detail opt-in).
   Dependencies: T6.2, T6.3, T6.4, T6.5, T6.6.

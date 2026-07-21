@@ -24,16 +24,18 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T6.7 — App/window classification table
-Branch: `stage-6/t6.7-classification-table`
-Sub-steps:
-- [ ] 1. Create `app/core/classification.py` and `classification_rules.json`.
-- [ ] 2. Create tests.
+(none — read tasks.md for the next unchecked task)
 
 ---
 
 ## History (completed tasks — most recent first)
 
+```
+### T6.8 — Per-sensor settings toggles — COMPLETE
+Branch: stage-6/t6.8-sensor-toggles (merged)
+Sub-steps: 4 ticked.
+Notes: Implemented per-sensor settings toggles and modified context snapshot to dynamically read preferences.
+```
 ```
 ### T6.6 — System state sensor — COMPLETE
 Branch: stage-6/t6.6-system-state-sensor (merged)
