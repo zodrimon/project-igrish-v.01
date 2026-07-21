@@ -12,7 +12,7 @@ class FakeSensor(ContextSensor):
     def name(self):
         return self._name
         
-    def get_current_state(self):
+    def get_current_state(self, preferences: dict = None):
         return {"val": self.state_val}
 
 @pytest.mark.asyncio

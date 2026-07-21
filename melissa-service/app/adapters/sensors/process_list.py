@@ -7,8 +7,13 @@ class ProcessListSensor(ContextSensor):
     def name(self) -> str:
         return "running_processes"
         
-    def get_current_state(self) -> Dict[str, Any]:
+    def get_current_state(self, preferences: Dict[str, str] = None) -> Dict[str, Any]:
         """Returns a list of unique running process names."""
+        prefs = preferences or {}
+        enabled = prefs.get("sensor.running_processes.enabled", "false").lower() == "true"
+        if not enabled:
+            return {"enabled": False, "count": 0, "processes": []}
+            
         try:
             # We collect unique names to save space
             process_names = set()
@@ -21,8 +26,9 @@ class ProcessListSensor(ContextSensor):
                     pass
                     
             return {
+                "enabled": True,
                 "count": len(process_names),
                 "processes": sorted(list(process_names))
             }
         except Exception as e:
-            return {"count": 0, "processes": [], "error": str(e)}
+            return {"enabled": True, "count": 0, "processes": [], "error": str(e)}

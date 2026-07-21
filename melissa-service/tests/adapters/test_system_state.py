@@ -6,9 +6,9 @@ def test_system_state_sensor():
     assert sensor.name == "system_state"
     
     # Initialize CPU percentage
-    sensor.get_current_state()
+    sensor.get_current_state({"sensor.system_state.enabled": "true"})
     
-    state = sensor.get_current_state()
+    state = sensor.get_current_state({"sensor.system_state.enabled": "true"})
     assert isinstance(state, dict)
     assert "cpu_percent" in state
     assert "memory_percent" in state

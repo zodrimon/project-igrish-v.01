@@ -14,6 +14,6 @@ class ContextSensor(ABC):
         pass
         
     @abstractmethod
-    def get_current_state(self) -> Dict[str, Any]:
+    def get_current_state(self, preferences: Dict[str, str] = None) -> Dict[str, Any]:
         """Returns the current state dictionary for this sensor."""
         pass

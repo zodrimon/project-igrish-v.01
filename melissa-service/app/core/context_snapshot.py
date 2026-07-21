@@ -25,11 +25,13 @@ class ContextSnapshot:
     def get_state(self) -> Dict[str, Any]:
         return dict(self._state)
         
-    def _update_snapshot(self):
+    def _update_snapshot(self, prefs: Dict[str, str] = None):
+        if prefs is None:
+            prefs = {}
         new_state = {}
         for sensor in self._sensors:
             try:
-                new_state[sensor.name] = sensor.get_current_state()
+                new_state[sensor.name] = sensor.get_current_state(prefs)
             except Exception as e:
                 logger.error(f"Sensor {sensor.name} failed to update: {e}")
                 
@@ -37,8 +39,21 @@ class ContextSnapshot:
         self._last_updated = time.time()
         
     async def _poll_loop(self, interval_seconds: float):
+        from app.core.db import SessionLocal
+        from app.models import Preference
+        from sqlalchemy import select
+
         while self._is_running:
-            self._update_snapshot()
+            prefs = {}
+            try:
+                async with SessionLocal() as session:
+                    result = await session.execute(select(Preference).where(Preference.key.like("sensor.%")))
+                    for pref in result.scalars():
+                        prefs[pref.key] = pref.value
+            except Exception as e:
+                logger.error(f"Failed to load preferences: {e}")
+
+            self._update_snapshot(prefs)
             await asyncio.sleep(interval_seconds)
             
     def start(self, interval_seconds: float = 2.0):
