@@ -411,7 +411,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test with synthetic snapshots proves the trigger condition fires/doesn't fire correctly, and that the cooldown table correctly suppresses a repeat trigger within its window.
   Commit: `feat: add heuristic nudge decision loop`
 
-- [ ] **T7.3 — LLM nudge phrasing**
+- [x] **T7.3 — LLM nudge phrasing**
   Branch: `stage-7/t7.3-nudge-phrasing`
   Do: When the decision loop decides to nudge, generate the natural-language phrasing via the LLM (through the persona prompt builder) — the LLM's job is *only* wording, never the decision.
   Dependencies: T7.2, T3.6.
