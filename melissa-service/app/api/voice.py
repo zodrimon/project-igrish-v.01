@@ -72,6 +72,31 @@ async def stream_audio(audio: UploadFile = File(...)):
         asyncio.create_task(_trigger_briefing())
         return Response(status_code=204)
         
+    # Intercept "explain this error" or "explain this file"
+    low_text = text.lower()
+    if "explain this error" in low_text or "explain this file" in low_text:
+        from app.core.context_snapshot import global_context_snapshot
+        snapshot = global_context_snapshot.get_state()
+        clipboard = snapshot.get("clipboard", {}).get("content", "")
+        window_title = snapshot.get("active_window", {}).get("title", "")
+        
+        project_context = ""
+        from app.core.plugin_loader import global_plugin_registry
+        for p in global_plugin_registry.get_all_plugins():
+            if p.name == "CodingCompanion":
+                # get_context_facts is async
+                facts = await p.get_context_facts()
+                if "active_project" in facts:
+                    project_context = f"Project: {facts['active_project']}"
+                    
+        intent = "error" if "explain this error" in low_text else "file"
+        text = (
+            f"Please explain this {intent}. "
+            f"Here is my clipboard content: '{clipboard}'. "
+            f"My active window title is: '{window_title}'. "
+            f"{project_context}"
+        )
+        
     from app.core.llm_registry import get_llm_provider
     from app.core.prompt_builder import build_prompt
     from app.core.conversation import global_conversation_buffer

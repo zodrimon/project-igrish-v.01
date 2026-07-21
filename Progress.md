@@ -24,14 +24,24 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T9.2 — VS Code project detection
-Branch: `stage-9/t9.2-project-detection`
+### T9.3 — Debugging/explain tool
+Branch: `stage-9/t9.3-debug-explain-tool`
 Sub-steps:
-- [x] 1. Create `app/plugins/coding_companion.py`.
-- [x] 2. Implement `CodingCompanionPlugin` that reads `active_window` from the global context snapshot to parse the VS Code project name/path.
-- [x] 3. Have `get_context_facts` return the active project if detected.
-- [x] 4. Wire the plugin loading in `main.py` by calling `global_plugin_registry.load_plugins()`.
-- [x] 5. Wire context facts from loaded plugins into `context_aggregator.py`.
+- [x] 1. Update `voice.py` stream handler to intercept "explain this error" and "explain this file".
+- [x] 2. If triggered, fetch active window title, clipboard content, and active project (from `global_plugin_registry`).
+- [x] 3. Construct a specific prompt combining the user's intent, the clipboard/window context, and the project context, and route to LLM.
+- [x] 4. Stream response back via TTS.
+
+---
+
+## History (completed tasks — most recent first)
+
+```
+### T9.2 — VS Code project detection — COMPLETE
+Branch: stage-9/t9.2-project-detection (merged)
+Sub-steps: 5 ticked.
+Notes: Added CodingCompanionPlugin to extract VS Code project from active window.
+```
 
 ---
 

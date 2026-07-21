@@ -474,7 +474,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: manual test across a few different open projects confirms correct project name/path is reported.
   Commit: `feat: add coding companion project detection`
 
-- [ ] **T9.3 — Debugging/explain tool**
+- [x] **T9.3 — Debugging/explain tool**
   Branch: `stage-9/t9.3-debug-explain-tool`
   Do: Add a tool the LLM can call (or a direct voice command) to explain a pasted/captured error or a given file, using the active project context from T9.2.
   Dependencies: T9.2, T3.7.
