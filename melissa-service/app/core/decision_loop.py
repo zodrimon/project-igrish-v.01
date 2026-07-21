@@ -69,13 +69,51 @@ class DecisionLoop:
         while self._is_running:
             nudge_trigger = await self.evaluate_heuristics()
             if nudge_trigger:
-                # In T7.3 we will use the LLM to phrase this and TTS to speak it.
-                # For now, just log it to the DB so the cooldown applies.
-                await NudgeLogManager.log_nudge(
-                    nudge_type=nudge_trigger["nudge_type"],
-                    content=f"Nudge for {nudge_trigger['goal_description']} while using {nudge_trigger['app_name']}",
-                    cooldown_minutes=30
+                from app.core.llm_registry import get_llm_provider
+                from app.core.prompt_builder import get_system_prompt
+                from app.api.voice import wake_word_event_queue
+                import logging
+                
+                logger = logging.getLogger(__name__)
+                llm = get_llm_provider()
+                
+                # Construct the prompt for the nudge
+                prompt = (
+                    f"{get_system_prompt()}\n\n"
+                    f"The user is currently distracted by using {nudge_trigger['app_name']}. "
+                    f"However, they have an active goal: '{nudge_trigger['goal_description']}'. "
+                    f"Please provide a single, brief, friendly sentence to nudge them back on track. "
+                    f"Do not be overly critical. Keep it conversational and spoken-style."
                 )
+                
+                messages = [{"role": "system", "content": prompt}]
+                
+                try:
+                    # Generate the text
+                    # The generate method is an async generator for streaming
+                    llm_stream = llm.generate(messages, stream=False)
+                    # wait, some adapters yield strings even if stream=False.
+                    # let's collect the full response.
+                    nudge_text = ""
+                    async for chunk in llm_stream:
+                        nudge_text += chunk
+                        
+                    nudge_text = nudge_text.strip()
+                    logger.info(f"Generated nudge: {nudge_text}")
+                    
+                    if nudge_text:
+                        # Log it
+                        await NudgeLogManager.log_nudge(
+                            nudge_type=nudge_trigger["nudge_type"],
+                            content=nudge_text,
+                            cooldown_minutes=30
+                        )
+                        
+                        # Trigger audio on frontend
+                        wake_word_event_queue.put_nowait(f"NUDGE_AUDIO:{nudge_text}")
+                except Exception as e:
+                    logger.error(f"Failed to generate or send nudge: {e}")
+                    
             await asyncio.sleep(self.check_interval_seconds)
             
     def start(self):

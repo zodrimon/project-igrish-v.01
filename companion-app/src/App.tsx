@@ -78,6 +78,10 @@ function App() {
         setTimeout(() => {
           stopRecording();
         }, 5000);
+      } else if (event.data.startsWith("NUDGE_AUDIO:")) {
+        const textToSpeak = encodeURIComponent(event.data.substring(12));
+        const audio = new Audio(`http://127.0.0.1:8000/api/v1/voice/tts?text=${textToSpeak}`);
+        audio.play().catch(e => console.error("Error playing nudge audio:", e));
       }
     };
 

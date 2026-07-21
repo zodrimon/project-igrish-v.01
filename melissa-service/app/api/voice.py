@@ -38,6 +38,20 @@ async def voice_events():
             yield f"data: {msg}\n\n"
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
+@router.get("/tts")
+async def synthesize_text(text: str):
+    """
+    Synthesize provided text to audio and return the stream.
+    Used for ad-hoc nudges.
+    """
+    # PiperTTSAdapter.synthesize_stream takes an async generator of text chunks.
+    # We can create a simple generator that yields the entire text.
+    async def single_sentence_generator():
+        yield text
+        
+    audio_stream = tts_adapter.synthesize_stream(single_sentence_generator())
+    return StreamingResponse(audio_stream, media_type="audio/wav")
+
 @router.post("/stream")
 async def stream_audio(audio: UploadFile = File(...)):
     """

@@ -31,6 +31,13 @@ This file is the **single source of truth for "exactly where things stand right 
 ## History (completed tasks — most recent first)
 
 ```
+### T7.3 — LLM-powered Nudge Generator — COMPLETE
+Branch: stage-7/t7.3-llm-nudge-gen (merged)
+Sub-steps: 4 ticked.
+Notes: Injected LLM and TTS, implemented generation loop and output synthesis.
+```
+
+```
 ### T7.2 — Heuristic decision loop (no LLM yet) — COMPLETE
 Branch: stage-7/t7.2-decision-loop-heuristics (merged)
 Sub-steps: 5 ticked.
