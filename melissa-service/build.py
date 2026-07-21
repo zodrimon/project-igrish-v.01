@@ -15,6 +15,7 @@ if __name__ == '__main__':
         '--collect-data=pocketsphinx',
         '--collect-all=chromadb',
         '--collect-all=pydantic',
+        '--collect-all=piper',
         
         # Hidden imports for FastAPI / Uvicorn / SQLAlchemy
         '--hidden-import=uvicorn.logging',
