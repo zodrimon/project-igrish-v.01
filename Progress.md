@@ -24,7 +24,11 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-`(none — read tasks.md for the next unchecked task)`
+### T6.7 — App/window classification table
+Branch: `stage-6/t6.7-classification-table`
+Sub-steps:
+- [ ] 1. Create `app/core/classification.py` and `classification_rules.json`.
+- [ ] 2. Create tests.
 
 ---
 

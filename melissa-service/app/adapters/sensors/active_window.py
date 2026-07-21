@@ -14,7 +14,7 @@ class ActiveWindowSensor(ContextSensor):
         try:
             hwnd = ctypes.windll.user32.GetForegroundWindow()
             if not hwnd:
-                return {"title": None, "process": None}
+                return {"window_title": None, "process_name": None, "category": "unknown"}
                 
             length = ctypes.windll.user32.GetWindowTextLengthW(hwnd)
             buff = ctypes.create_unicode_buffer(length + 1)
@@ -30,9 +30,14 @@ class ActiveWindowSensor(ContextSensor):
             except psutil.Error:
                 process_name = None
                 
+            from app.core.classification import AppClassifier
+            classifier = AppClassifier()
+            category = classifier.classify(process_name, title)
+                
             return {
-                "title": title,
-                "process": process_name
+                "process_name": process_name,
+                "window_title": title,
+                "category": category
             }
         except Exception as e:
-            return {"title": None, "process": None, "error": str(e)}
+            return {"process_name": None, "window_title": None, "category": "unknown", "error": str(e)}
