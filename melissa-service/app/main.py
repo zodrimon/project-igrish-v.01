@@ -33,9 +33,12 @@ async def lifespan(app: FastAPI):
     global_context_snapshot.register_sensor(SystemStateSensor())
     global_context_snapshot.start(interval_seconds=2.0)
     
+    from app.core.scheduler import global_briefing_scheduler
+    global_briefing_scheduler.start()
     wake_sensor.start()
     yield
     wake_sensor.stop()
+    global_briefing_scheduler.stop()
     global_context_snapshot.stop()
 
 app = FastAPI(title="Melissa Service", version="0.1.0", lifespan=lifespan)

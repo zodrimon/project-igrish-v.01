@@ -439,7 +439,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test against a seeded test DB confirms the correct set of goals/items is returned.
   Commit: `feat: add daily briefing data pull`
 
-- [ ] **T8.2 — Briefing prompt + manual trigger**
+- [x] **T8.2 — Briefing prompt + manual trigger**
   Branch: `stage-8/t8.2-briefing-prompt-manual`
   Do: Build the briefing-specific LLM prompt (via the persona builder) and add a manual "Melissa, brief me" voice/UI trigger for testing/on-demand use.
   Dependencies: T8.1, T3.6.

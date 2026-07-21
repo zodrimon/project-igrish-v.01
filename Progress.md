@@ -24,17 +24,23 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T8.2 — Briefing prompt + manual trigger
-Branch: `stage-8/t8.2-briefing-prompt-manual`
+### T8.3 — First-activity-of-day scheduler
+Branch: `stage-8/t8.3-first-activity-scheduler`
 Sub-steps:
-- [x] 1. Add `build_briefing_prompt(briefing_data)` to `app/core/prompt_builder.py`.
-- [x] 2. Add `POST /api/v1/voice/briefing` endpoint to generate briefing text using LLM and push to SSE queue as `NUDGE_AUDIO:`.
-- [x] 3. Update `companion-app` to include a "Daily Briefing" manual trigger button.
-- [x] 4. Update LLM stream logic to handle "brief me" voice command to trigger the briefing.
+- [x] 1. Create `app/core/scheduler.py` to track the last date a briefing was given (stored in DB `Preference` `last_briefing_date`).
+- [x] 2. Update `ContextSnapshot` polling loop to trigger the briefing if the date has changed and activity is detected.
+- [x] 3. Write unit test for the scheduling logic.
 
 ---
 
 ## History (completed tasks — most recent first)
+
+```
+### T8.2 — Briefing prompt + manual trigger — COMPLETE
+Branch: stage-8/t8.2-briefing-prompt-manual (merged)
+Sub-steps: 4 ticked.
+Notes: Added build_briefing_prompt to prompt_builder.py, POST /api/v1/voice/briefing endpoint, and trigger button to companion-app UI. Also intercepts "brief me" voice command.
+```
 
 ```
 ### T8.1 — Briefing data-pull query — COMPLETE
