@@ -31,6 +31,7 @@ dev = [
     "ruff",
     "black",
     "mypy",
+    "pyinstaller",
 ]
 
 [build-system]
