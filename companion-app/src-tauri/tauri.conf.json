@@ -31,8 +31,8 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "resources": [
-      "../../melissa-service/dist/melissa-service/*"
-    ]
+    "resources": {
+      "../../melissa-service/dist/melissa-service/*": "backend"
+    }
   }
 }

@@ -34,7 +34,7 @@ pub fn run() {
             let mut service_path = app.path().resource_dir().unwrap();
             
             let mut possible_path_1 = service_path.clone();
-            possible_path_1.push("melissa-service");
+            possible_path_1.push("backend");
             possible_path_1.push("melissa-service.exe");
             
             let mut possible_path_2 = service_path.clone();
