@@ -24,7 +24,14 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-(none — read tasks.md for the next unchecked task)
+### T7.2 — Heuristic decision loop (no LLM yet)
+Branch: `stage-7/t7.2-decision-loop-heuristics`
+Sub-steps:
+- [x] 1. Create `app/core/decision_loop.py`.
+- [x] 2. Implement logic to check context snapshot for distraction vs active goals.
+- [x] 3. Integrate cooldown check from `NudgeLogManager`.
+- [x] 4. Create a background loop that evaluates heuristics periodically.
+- [x] 5. Write unit test with synthetic snapshot to verify logic.
 
 ---
 
