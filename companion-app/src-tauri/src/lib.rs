@@ -35,17 +35,22 @@ pub fn run() {
             
             let mut possible_path_1 = service_path.clone();
             possible_path_1.push("backend");
+            possible_path_1.push("melissa-service");
             possible_path_1.push("melissa-service.exe");
             
             let mut possible_path_2 = service_path.clone();
+            possible_path_2.push("backend");
             possible_path_2.push("melissa-service.exe");
+
+            let mut possible_path_3 = service_path.clone();
+            possible_path_3.push("melissa-service.exe");
 
             let target_path = if possible_path_1.exists() {
                 possible_path_1
             } else if possible_path_2.exists() {
                 possible_path_2
             } else {
-                possible_path_2 // Default to fallback for logging
+                possible_path_3 // Default to fallback for logging
             };
             
             println!("Starting backend service at {:?}", target_path);

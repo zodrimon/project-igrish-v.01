@@ -32,7 +32,7 @@
       "icons/icon.ico"
     ],
     "resources": {
-      "../../melissa-service/dist/melissa-service/*": "backend"
+      "../../melissa-service/dist/melissa-service": "backend"
     }
   }
 }
