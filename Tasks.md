@@ -467,7 +467,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test loads a trivial dummy plugin and confirms it's discoverable/registered correctly.
   Commit: `feat: add plugin base interface and loader`
 
-- [ ] **T9.2 — VS Code project detection**
+- [x] **T9.2 — VS Code project detection**
   Branch: `stage-9/t9.2-project-detection`
   Do: Implement project detection inside `plugins/coding_companion/` using the Stage 6 sensors (active window/process) to identify the current VS Code project/folder.
   Dependencies: T9.1, T6.9.

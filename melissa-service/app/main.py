@@ -34,6 +34,9 @@ async def lifespan(app: FastAPI):
     global_context_snapshot.start(interval_seconds=2.0)
     
     from app.core.scheduler import global_briefing_scheduler
+    from app.core.plugin_loader import global_plugin_registry
+    
+    global_plugin_registry.load_plugins()
     global_briefing_scheduler.start()
     wake_sensor.start()
     yield

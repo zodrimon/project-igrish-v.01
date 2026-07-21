@@ -24,13 +24,25 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T9.1 — Plugin base interface
-Branch: `stage-9/t9.1-plugin-base`
+### T9.2 — VS Code project detection
+Branch: `stage-9/t9.2-project-detection`
 Sub-steps:
-- [x] 1. Create `app/plugins/base.py` with `PluginBase` abstract class.
-- [x] 2. Create `app/core/plugin_loader.py` to dynamically load plugins from `app/plugins/`.
-- [x] 3. Write unit tests for plugin loader with a dummy plugin.
+- [x] 1. Create `app/plugins/coding_companion.py`.
+- [x] 2. Implement `CodingCompanionPlugin` that reads `active_window` from the global context snapshot to parse the VS Code project name/path.
+- [x] 3. Have `get_context_facts` return the active project if detected.
+- [x] 4. Wire the plugin loading in `main.py` by calling `global_plugin_registry.load_plugins()`.
+- [x] 5. Wire context facts from loaded plugins into `context_aggregator.py`.
 
+---
+
+## History (completed tasks — most recent first)
+
+```
+### T9.1 — Plugin base interface — COMPLETE
+Branch: stage-9/t9.1-plugin-base (merged)
+Sub-steps: 3 ticked.
+Notes: Added PluginBase and PluginRegistry loader.
+```
 ---
 
 ## History (completed tasks — most recent first)
