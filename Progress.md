@@ -24,16 +24,18 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T8.1 — Briefing data-pull query
-Branch: `stage-8/t8.1-briefing-data-pull`
-Sub-steps:
-- [x] 1. Create `app/core/briefing.py`.
-- [x] 2. Implement `pull_briefing_data()` to query active goals, yesterday's unfinished items, and stated priorities.
-- [x] 3. Write unit test `test_briefing_data_pull.py`.
+(none — read tasks.md for the next unchecked task)
 
 ---
 
 ## History (completed tasks — most recent first)
+
+```
+### T8.1 — Briefing data-pull query — COMPLETE
+Branch: stage-8/t8.1-briefing-data-pull (merged)
+Sub-steps: 3 ticked.
+Notes: Created app/core/briefing.py to pull active goals from SQL and unfinished items / priorities from semantic memory.
+```
 
 ```
 ### T7.4 — Nudge settings panel — COMPLETE

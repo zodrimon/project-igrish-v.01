@@ -432,7 +432,7 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 8 — Daily Briefing
 *Goal: dynamic, non-templated morning greeting, per `context.md` §2.1/§6.*
 
-- [ ] **T8.1 — Briefing data-pull query**
+- [x] **T8.1 — Briefing data-pull query**
   Branch: `stage-8/t8.1-briefing-data-pull`
   Do: Implement `core/briefing.py`'s data layer: pull active goals, yesterday's unfinished items, and stated priorities from structured memory.
   Dependencies: T5.1.
