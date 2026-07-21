@@ -24,13 +24,24 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T9.3 — Debugging/explain tool
-Branch: `stage-9/t9.3-debug-explain-tool`
+### T9.4 — Scoped documentation search tool
+Branch: `stage-9/t9.4-doc-search-tool`
 Sub-steps:
-- [x] 1. Update `voice.py` stream handler to intercept "explain this error" and "explain this file".
-- [x] 2. If triggered, fetch active window title, clipboard content, and active project (from `global_plugin_registry`).
-- [x] 3. Construct a specific prompt combining the user's intent, the clipboard/window context, and the project context, and route to LLM.
-- [x] 4. Stream response back via TTS.
+- [x] 1. Add `duckduckgo-search` to `pyproject.toml` and install it.
+- [x] 2. Create `app/plugins/search_tool.py` providing a basic `search_docs` function.
+- [x] 3. Update `voice.py` to intercept "search docs for X" or "search documentation for X".
+- [x] 4. Inject search results into LLM prompt so Melissa can summarize the answer.
+
+---
+
+## History (completed tasks — most recent first)
+
+```
+### T9.3 — Debugging/explain tool — COMPLETE
+Branch: stage-9/t9.3-debug-explain-tool (merged)
+Sub-steps: 4 ticked.
+Notes: Intercepts explain error/file and feeds context snapshot to LLM.
+```
 
 ---
 

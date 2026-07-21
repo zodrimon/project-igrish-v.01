@@ -97,6 +97,20 @@ async def stream_audio(audio: UploadFile = File(...)):
             f"{project_context}"
         )
         
+    # Intercept "search docs for X" or "search documentation for X"
+    if "search docs for" in low_text or "search documentation for" in low_text:
+        query_start = low_text.find("for ") + 4
+        query = text[query_start:].strip()
+        if query:
+            from app.plugins.search_tool import search_docs
+            # Fire search synchronously for the prompt building
+            results = await search_docs(query)
+            text = (
+                f"I asked you to search the documentation for '{query}'. "
+                f"Here are the search results:\n{results}\n\n"
+                f"Please summarize the answer to my query based on these results."
+            )
+        
     from app.core.llm_registry import get_llm_provider
     from app.core.prompt_builder import build_prompt
     from app.core.conversation import global_conversation_buffer

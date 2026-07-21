@@ -481,7 +481,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: manual test with a real bug in a real project — response correctly references the actual project/error.
   Commit: `feat: add coding companion debug/explain tool`
 
-- [ ] **T9.4 — Scoped documentation search tool**
+- [x] **T9.4 — Scoped documentation search tool**
   Branch: `stage-9/t9.4-doc-search-tool`
   Do: Add a narrowly-scoped "search documentation" tool exposed to the LLM (not a general web browser — keep scope tight to doc lookups for this stage).
   Dependencies: T9.1, T3.7.
