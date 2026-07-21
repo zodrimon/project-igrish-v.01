@@ -24,7 +24,12 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-(none — read tasks.md for the next unchecked task)
+### T8.1 — Briefing data-pull query
+Branch: `stage-8/t8.1-briefing-data-pull`
+Sub-steps:
+- [x] 1. Create `app/core/briefing.py`.
+- [x] 2. Implement `pull_briefing_data()` to query active goals, yesterday's unfinished items, and stated priorities.
+- [x] 3. Write unit test `test_briefing_data_pull.py`.
 
 ---
 
