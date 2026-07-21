@@ -24,7 +24,13 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-(none — read tasks.md for the next unchecked task)
+### T7.1 — Nudge cooldown log
+Branch: `stage-7/t7.1-nudge-cooldown-log`
+Sub-steps:
+- [x] 1. Add `cooldown_until` to `NudgeLog` model in `models.py`.
+- [x] 2. Generate and run Alembic migration for the schema change.
+- [x] 3. Create `app/memory/nudge_log.py` to handle logging and cooldown checks.
+- [x] 4. Write unit tests to verify cooldown logic.
 
 ---
 

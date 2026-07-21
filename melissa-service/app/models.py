@@ -38,6 +38,7 @@ class NudgeLog(Base):
     nudge_type = Column(String)
     content = Column(Text)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+    cooldown_until = Column(DateTime(timezone=True))
 
 class Conversation(Base):
     __tablename__ = "conversations"
