@@ -418,7 +418,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: manual test confirms a triggered nudge is spoken naturally and references the actual goal/situation, not a generic template.
   Commit: `feat: add LLM-generated nudge phrasing`
 
-- [ ] **T7.4 — Nudge settings panel**
+- [x] **T7.4 — Nudge settings panel**
   Branch: `stage-7/t7.4-nudge-settings`
   Do: Add settings for nudge sensitivity (off / gentle / normal) and per-category mute.
   Dependencies: T7.2.
