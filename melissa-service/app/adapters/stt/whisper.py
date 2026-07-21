@@ -17,11 +17,20 @@ class WhisperSTTAdapter(STTProvider):
         Uses asyncio.to_thread to avoid blocking the event loop.
         """
         def _transcribe_sync():
-            # faster-whisper can accept a file-like object
-            audio_stream = io.BytesIO(audio)
-            segments, _ = self.model.transcribe(audio_stream, beam_size=5)
-            # segments is a generator, so we need to iterate to get the text
-            return "".join([segment.text for segment in segments]).strip()
+            import tempfile
+            import os
+            
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".webm") as tmp:
+                tmp.write(audio)
+                tmp_path = tmp.name
+                
+            try:
+                segments, _ = self.model.transcribe(tmp_path, beam_size=5)
+                text = "".join([segment.text for segment in segments]).strip()
+            finally:
+                if os.path.exists(tmp_path):
+                    os.remove(tmp_path)
+            return text
             
         # Run the CPU-bound transcription in a separate thread
         text = await asyncio.to_thread(_transcribe_sync)
