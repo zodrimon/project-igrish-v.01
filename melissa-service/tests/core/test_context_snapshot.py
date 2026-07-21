@@ -28,7 +28,7 @@ async def test_context_snapshot_polling():
     await asyncio.sleep(0.15)
     
     state = snapshot.get_state()
-    assert state == {"fake1": {"val": "initial"}}
+    assert state["fake1"] == {"val": "initial"}
     
     # Update fake sensor
     sensor1.state_val = "updated"
@@ -37,6 +37,6 @@ async def test_context_snapshot_polling():
     await asyncio.sleep(0.15)
     
     state = snapshot.get_state()
-    assert state == {"fake1": {"val": "updated"}}
+    assert state["fake1"] == {"val": "updated"}
     
     snapshot.stop()

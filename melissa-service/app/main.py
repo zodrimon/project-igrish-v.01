@@ -3,8 +3,38 @@ from fastapi.middleware.cors import CORSMiddleware
 import logging
 from app.api import voice
 
-logging.basicConfig(level=logging.INFO)
+import sys
+import os
+import traceback
+from logging.handlers import RotatingFileHandler
 
+# Set up logs directory
+LOG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "logs")
+os.makedirs(LOG_DIR, exist_ok=True)
+LOG_FILE = os.path.join(LOG_DIR, "melissa.log")
+
+# Configure root logger to output to both console and rotating file
+log_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+root_logger = logging.getLogger()
+root_logger.setLevel(logging.INFO)
+
+# Console handler
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(log_formatter)
+root_logger.addHandler(console_handler)
+
+# Rotating file handler (10MB max, keep 5 backups)
+file_handler = RotatingFileHandler(LOG_FILE, maxBytes=10*1024*1024, backupCount=5)
+file_handler.setFormatter(log_formatter)
+root_logger.addHandler(file_handler)
+
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logging.critical("Uncaught exception", exc_info=(exc_type, exc_value, exc_traceback))
+
+sys.excepthook = handle_exception
 import asyncio
 from contextlib import asynccontextmanager
 from app.adapters.sensors.wake_word import WakeWordSensor
