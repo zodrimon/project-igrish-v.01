@@ -24,7 +24,12 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-(none — read tasks.md for the next unchecked task)
+### T9.1 — Plugin base interface
+Branch: `stage-9/t9.1-plugin-base`
+Sub-steps:
+- [x] 1. Create `app/plugins/base.py` with `PluginBase` abstract class.
+- [x] 2. Create `app/core/plugin_loader.py` to dynamically load plugins from `app/plugins/`.
+- [x] 3. Write unit tests for plugin loader with a dummy plugin.
 
 ---
 

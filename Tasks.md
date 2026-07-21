@@ -460,7 +460,7 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 9 — Coding Companion (first plugin)
 *Goal: project-aware coding help, per `context.md` §11.*
 
-- [ ] **T9.1 — Plugin base interface**
+- [x] **T9.1 — Plugin base interface**
   Branch: `stage-9/t9.1-plugin-base`
   Do: Implement `plugins/base.py`: the plugin contract (contributes context facts, optional LLM tools, optional proactive triggers with their own cooldowns), plus a plugin loader in `core/`.
   Dependencies: T5.5, T7.2.
