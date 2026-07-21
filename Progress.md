@@ -24,16 +24,18 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T8.3 — First-activity-of-day scheduler
-Branch: `stage-8/t8.3-first-activity-scheduler`
-Sub-steps:
-- [x] 1. Create `app/core/scheduler.py` to track the last date a briefing was given (stored in DB `Preference` `last_briefing_date`).
-- [x] 2. Update `ContextSnapshot` polling loop to trigger the briefing if the date has changed and activity is detected.
-- [x] 3. Write unit test for the scheduling logic.
+(none — read tasks.md for the next unchecked task)
 
 ---
 
 ## History (completed tasks — most recent first)
+
+```
+### T8.3 — First-activity-of-day scheduler — COMPLETE
+Branch: stage-8/t8.3-first-activity-scheduler (merged)
+Sub-steps: 3 ticked.
+Notes: Added BriefingScheduler to trigger briefing on first input activity of the day.
+```
 
 ```
 ### T8.2 — Briefing prompt + manual trigger — COMPLETE

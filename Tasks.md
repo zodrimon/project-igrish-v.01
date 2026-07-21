@@ -446,7 +446,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: triggering manually across different days produces briefings that reference real, current data and don't read as templated.
   Commit: `feat: add daily briefing prompt with manual trigger`
 
-- [ ] **T8.3 — First-activity-of-day scheduler**
+- [x] **T8.3 — First-activity-of-day scheduler**
   Branch: `stage-8/t8.3-first-activity-scheduler`
   Do: Implement `core/scheduler.py`: trigger the briefing automatically on the first detected activity of a new day (not a wall-clock timer, so it isn't missed if the machine was off/asleep).
   Dependencies: T8.2, T6.9.
