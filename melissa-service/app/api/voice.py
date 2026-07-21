@@ -38,6 +38,20 @@ async def voice_events():
             yield f"data: {msg}\n\n"
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
+@router.get("/tts")
+async def synthesize_text(text: str):
+    """
+    Synthesize provided text to audio and return the stream.
+    Used for ad-hoc nudges.
+    """
+    # PiperTTSAdapter.synthesize_stream takes an async generator of text chunks.
+    # We can create a simple generator that yields the entire text.
+    async def single_sentence_generator():
+        yield text
+        
+    audio_stream = tts_adapter.synthesize_stream(single_sentence_generator())
+    return StreamingResponse(audio_stream, media_type="audio/wav")
+
 @router.post("/stream")
 async def stream_audio(audio: UploadFile = File(...)):
     """
@@ -51,6 +65,51 @@ async def stream_audio(audio: UploadFile = File(...)):
     
     if not text or text.strip().lower() in ("", "[silence]", "[blank audio]"):
         return Response(status_code=204)
+        
+    # Intercept "brief me"
+    if "brief me" in text.lower():
+        # Trigger briefing manually
+        asyncio.create_task(_trigger_briefing())
+        return Response(status_code=204)
+        
+    # Intercept "explain this error" or "explain this file"
+    low_text = text.lower()
+    if "explain this error" in low_text or "explain this file" in low_text:
+        from app.core.context_snapshot import global_context_snapshot
+        snapshot = global_context_snapshot.get_state()
+        clipboard = snapshot.get("clipboard", {}).get("content", "")
+        window_title = snapshot.get("active_window", {}).get("title", "")
+        
+        project_context = ""
+        from app.core.plugin_loader import global_plugin_registry
+        for p in global_plugin_registry.get_all_plugins():
+            if p.name == "CodingCompanion":
+                # get_context_facts is async
+                facts = await p.get_context_facts()
+                if "active_project" in facts:
+                    project_context = f"Project: {facts['active_project']}"
+                    
+        intent = "error" if "explain this error" in low_text else "file"
+        text = (
+            f"Please explain this {intent}. "
+            f"Here is my clipboard content: '{clipboard}'. "
+            f"My active window title is: '{window_title}'. "
+            f"{project_context}"
+        )
+        
+    # Intercept "search docs for X" or "search documentation for X"
+    if "search docs for" in low_text or "search documentation for" in low_text:
+        query_start = low_text.find("for ") + 4
+        query = text[query_start:].strip()
+        if query:
+            from app.plugins.search_tool import search_docs
+            # Fire search synchronously for the prompt building
+            results = await search_docs(query)
+            text = (
+                f"I asked you to search the documentation for '{query}'. "
+                f"Here are the search results:\n{results}\n\n"
+                f"Please summarize the answer to my query based on these results."
+            )
         
     from app.core.llm_registry import get_llm_provider
     from app.core.prompt_builder import build_prompt
@@ -123,3 +182,32 @@ async def stream_audio(audio: UploadFile = File(...)):
     audio_stream = tts_adapter.synthesize_stream(wrapped_sentence_stream())
     
     return StreamingResponse(audio_stream, media_type="audio/wav")
+
+async def _trigger_briefing():
+    from app.core.briefing import pull_briefing_data
+    from app.core.prompt_builder import build_briefing_prompt
+    from app.core.llm_registry import get_llm_provider
+    
+    try:
+        data = await pull_briefing_data()
+        messages = build_briefing_prompt(data)
+        
+        llm = get_llm_provider()
+        llm_stream = llm.generate(messages, stream=False)
+        
+        briefing_text = ""
+        async for chunk in llm_stream:
+            briefing_text += chunk
+            
+        briefing_text = briefing_text.strip()
+        if briefing_text:
+            logger.info(f"Generated briefing: {briefing_text}")
+            wake_word_event_queue.put_nowait(f"NUDGE_AUDIO:{briefing_text}")
+    except Exception as e:
+        logger.error(f"Failed to generate briefing: {e}")
+
+@router.post("/briefing")
+async def trigger_briefing():
+    """Manually trigger the daily briefing."""
+    asyncio.create_task(_trigger_briefing())
+    return {"status": "briefing started"}

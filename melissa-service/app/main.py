@@ -28,14 +28,20 @@ async def lifespan(app: FastAPI):
     # Initialize snapshot
     global_context_snapshot.register_sensor(ActiveWindowSensor())
     global_context_snapshot.register_sensor(ProcessListSensor())
-    global_context_snapshot.register_sensor(ClipboardSensor(enabled=False))
+    global_context_snapshot.register_sensor(ClipboardSensor())
     global_context_snapshot.register_sensor(InputActivitySensor())
     global_context_snapshot.register_sensor(SystemStateSensor())
     global_context_snapshot.start(interval_seconds=2.0)
     
+    from app.core.scheduler import global_briefing_scheduler
+    from app.core.plugin_loader import global_plugin_registry
+    
+    global_plugin_registry.load_plugins()
+    global_briefing_scheduler.start()
     wake_sensor.start()
     yield
     wake_sensor.stop()
+    global_briefing_scheduler.stop()
     global_context_snapshot.stop()
 
 app = FastAPI(title="Melissa Service", version="0.1.0", lifespan=lifespan)
@@ -51,6 +57,8 @@ app.add_middleware(
 )
 
 app.include_router(voice.router)
+from app.api import settings
+app.include_router(settings.router)
 
 
 @app.get("/health")

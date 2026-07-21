@@ -74,6 +74,25 @@ async def build_augmented_prompt(user_text: str) -> List[Dict[str, Any]]:
         context_text += "\nReal-Time Context Snapshot:\n"
         for sensor_name, state in snapshot_state.items():
             context_text += f"[{sensor_name}]: {state}\n"
+            
+    from app.core.plugin_loader import global_plugin_registry
+    plugins = global_plugin_registry.get_all_plugins()
+    if plugins:
+        plugin_facts = {}
+        # get_context_facts is async
+        fact_tasks = [p.get_context_facts() for p in plugins]
+        results = await asyncio.gather(*fact_tasks, return_exceptions=True)
+        
+        for plugin, result in zip(plugins, results):
+            if isinstance(result, Exception):
+                pass
+            elif result:
+                plugin_facts[plugin.name] = result
+                
+        if plugin_facts:
+            context_text += "\nPlugin Context Facts:\n"
+            for p_name, p_facts in plugin_facts.items():
+                context_text += f"[{p_name}]: {p_facts}\n"
     
     # Delegate to build_prompt
     return build_prompt(user_text, conversation_history=history, relevant_memories=[context_text])

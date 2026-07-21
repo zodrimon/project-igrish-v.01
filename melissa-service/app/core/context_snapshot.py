@@ -18,6 +18,7 @@ class ContextSnapshot:
         self._last_updated: float = 0.0
         self._poll_task = None
         self._is_running = False
+        self._active_seconds: float = 0.0
         
     def register_sensor(self, sensor: ContextSensor):
         self._sensors.append(sensor)
@@ -34,6 +35,20 @@ class ContextSnapshot:
                 new_state[sensor.name] = sensor.get_current_state(prefs)
             except Exception as e:
                 logger.error(f"Sensor {sensor.name} failed to update: {e}")
+                
+                
+        idle_seconds = new_state.get("input_activity", {}).get("idle_seconds", 0)
+        if idle_seconds < 10.0:
+            if self._last_updated:
+                self._active_seconds += (time.time() - self._last_updated)
+        else:
+            self._active_seconds = 0.0
+            
+        # Focus mode: > 60 seconds of continuous activity (idle < 10s)
+        new_state["focus_mode"] = {
+            "is_active": self._active_seconds > 60.0,
+            "active_seconds": round(self._active_seconds, 1)
+        }
                 
         self._state = new_state
         self._last_updated = time.time()

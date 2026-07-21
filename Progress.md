@@ -24,16 +24,115 @@ This file is the **single source of truth for "exactly where things stand right 
 
 ## CURRENT TASK
 
-### T6.7 — App/window classification table
-Branch: `stage-6/t6.7-classification-table`
+### T9.5 — Focus-mode gating (shared with nudges)
+Branch: `stage-9/t9.5-focus-mode-gating`
 Sub-steps:
-- [ ] 1. Create `app/core/classification.py` and `classification_rules.json`.
-- [ ] 2. Create tests.
+- [x] 1. Add `_active_seconds` to `ContextSnapshot` and `focus_mode` to snapshot state.
+- [x] 2. Update `decision_loop.py` to abort heuristic nudges and plugin triggers if `focus_mode` is active.
+- [x] 3. Refactor decision loop prompt construction to handle arbitrary plugin nudge strings vs distraction dicts.
 
 ---
 
 ## History (completed tasks — most recent first)
 
+```
+### T9.4 — Scoped documentation search tool — COMPLETE
+Branch: stage-9/t9.4-doc-search-tool (merged)
+Sub-steps: 4 ticked.
+Notes: Added duckduckgo-search and intercepted search docs.
+```
+
+---
+
+## History (completed tasks — most recent first)
+
+```
+### T9.3 — Debugging/explain tool — COMPLETE
+Branch: stage-9/t9.3-debug-explain-tool (merged)
+Sub-steps: 4 ticked.
+Notes: Intercepts explain error/file and feeds context snapshot to LLM.
+```
+
+---
+
+## History (completed tasks — most recent first)
+
+```
+### T9.2 — VS Code project detection — COMPLETE
+Branch: stage-9/t9.2-project-detection (merged)
+Sub-steps: 5 ticked.
+Notes: Added CodingCompanionPlugin to extract VS Code project from active window.
+```
+
+---
+
+## History (completed tasks — most recent first)
+
+```
+### T9.1 — Plugin base interface — COMPLETE
+Branch: stage-9/t9.1-plugin-base (merged)
+Sub-steps: 3 ticked.
+Notes: Added PluginBase and PluginRegistry loader.
+```
+---
+
+## History (completed tasks — most recent first)
+
+```
+### T8.3 — First-activity-of-day scheduler — COMPLETE
+Branch: stage-8/t8.3-first-activity-scheduler (merged)
+Sub-steps: 3 ticked.
+Notes: Added BriefingScheduler to trigger briefing on first input activity of the day.
+```
+
+```
+### T8.2 — Briefing prompt + manual trigger — COMPLETE
+Branch: stage-8/t8.2-briefing-prompt-manual (merged)
+Sub-steps: 4 ticked.
+Notes: Added build_briefing_prompt to prompt_builder.py, POST /api/v1/voice/briefing endpoint, and trigger button to companion-app UI. Also intercepts "brief me" voice command.
+```
+
+```
+### T8.1 — Briefing data-pull query — COMPLETE
+Branch: stage-8/t8.1-briefing-data-pull (merged)
+Sub-steps: 3 ticked.
+Notes: Created app/core/briefing.py to pull active goals from SQL and unfinished items / priorities from semantic memory.
+```
+
+```
+### T7.4 — Nudge settings panel — COMPLETE
+Branch: stage-7/t7.4-nudge-settings (merged)
+Sub-steps: 5 ticked.
+Notes: Added nudge sensitivity and mute categories to db and ui. Decision loop respects them.
+```
+
+```
+### T7.3 — LLM-powered Nudge Generator — COMPLETE
+Branch: stage-7/t7.3-llm-nudge-gen (merged)
+Sub-steps: 4 ticked.
+Notes: Injected LLM and TTS, implemented generation loop and output synthesis.
+```
+
+```
+### T7.2 — Heuristic decision loop (no LLM yet) — COMPLETE
+Branch: stage-7/t7.2-decision-loop-heuristics (merged)
+Sub-steps: 5 ticked.
+Notes: Added heuristic decision loop evaluating active window distractibility vs active goals, integrated with cooldowns.
+```
+
+```
+### T7.1 — Nudge cooldown log — COMPLETE
+Branch: stage-7/t7.1-nudge-cooldown-log (merged)
+Sub-steps: 4 ticked.
+Notes: Added NudgeLogManager with cooldown check.
+```
+
+```
+### T6.8 — Per-sensor settings toggles — COMPLETE
+Branch: stage-6/t6.8-sensor-toggles (merged)
+Sub-steps: 4 ticked.
+Notes: Implemented per-sensor settings toggles and modified context snapshot to dynamically read preferences.
+```
 ```
 ### T6.6 — System state sensor — COMPLETE
 Branch: stage-6/t6.6-system-state-sensor (merged)

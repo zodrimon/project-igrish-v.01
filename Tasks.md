@@ -376,7 +376,7 @@ Follow this procedure at the start of every work session, with no exceptions:
   Test: unit test confirms known apps classify correctly and unknown apps fall back to `unknown` without erroring.
   Commit: `feat: add app/window classification table`
 
-- [ ] **T6.8 — Per-sensor settings toggles**
+- [x] **T6.8 — Per-sensor settings toggles**
   Branch: `stage-6/t6.8-sensor-toggles`
   Do: Add individual settings toggles for each sensor from T6.2–T6.6, defaulting to the least-invasive set enabled (active app category + idle time only; clipboard/window-title detail opt-in).
   Dependencies: T6.2, T6.3, T6.4, T6.5, T6.6.
@@ -397,28 +397,28 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 7 — Productivity Companion
 *Goal: contextual, non-repetitive proactive nudges, per `context.md` §3.4/§7.*
 
-- [ ] **T7.1 — Nudge cooldown log**
+- [x] **T7.1 — Nudge cooldown log**
   Branch: `stage-7/t7.1-nudge-cooldown-log`
   Do: Implement `memory/nudge_log.py` backed by the `nudge_log` SQL table — records nudge category + timestamp + cooldown-until.
   Dependencies: T5.1.
   Test: unit test confirms a nudge category logged now correctly reports "on cooldown" until its window elapses.
   Commit: `feat: add nudge cooldown log`
 
-- [ ] **T7.2 — Heuristic decision loop (no LLM yet)**
+- [x] **T7.2 — Heuristic decision loop (no LLM yet)**
   Branch: `stage-7/t7.2-decision-loop-heuristics`
   Do: Implement `core/decision_loop.py`: a background loop evaluating cheap heuristics on the Context Snapshot + active structured goals (e.g., N minutes in "distraction" category + an open same-day goal) to *decide whether* to nudge — deliberately no LLM call in this task, decision logic only.
   Dependencies: T6.9, T5.1, T7.1.
   Test: unit test with synthetic snapshots proves the trigger condition fires/doesn't fire correctly, and that the cooldown table correctly suppresses a repeat trigger within its window.
   Commit: `feat: add heuristic nudge decision loop`
 
-- [ ] **T7.3 — LLM nudge phrasing**
+- [x] **T7.3 — LLM nudge phrasing**
   Branch: `stage-7/t7.3-nudge-phrasing`
   Do: When the decision loop decides to nudge, generate the natural-language phrasing via the LLM (through the persona prompt builder) — the LLM's job is *only* wording, never the decision.
   Dependencies: T7.2, T3.6.
   Test: manual test confirms a triggered nudge is spoken naturally and references the actual goal/situation, not a generic template.
   Commit: `feat: add LLM-generated nudge phrasing`
 
-- [ ] **T7.4 — Nudge settings panel**
+- [x] **T7.4 — Nudge settings panel**
   Branch: `stage-7/t7.4-nudge-settings`
   Do: Add settings for nudge sensitivity (off / gentle / normal) and per-category mute.
   Dependencies: T7.2.
@@ -432,21 +432,21 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 8 — Daily Briefing
 *Goal: dynamic, non-templated morning greeting, per `context.md` §2.1/§6.*
 
-- [ ] **T8.1 — Briefing data-pull query**
+- [x] **T8.1 — Briefing data-pull query**
   Branch: `stage-8/t8.1-briefing-data-pull`
   Do: Implement `core/briefing.py`'s data layer: pull active goals, yesterday's unfinished items, and stated priorities from structured memory.
   Dependencies: T5.1.
   Test: unit test against a seeded test DB confirms the correct set of goals/items is returned.
   Commit: `feat: add daily briefing data pull`
 
-- [ ] **T8.2 — Briefing prompt + manual trigger**
+- [x] **T8.2 — Briefing prompt + manual trigger**
   Branch: `stage-8/t8.2-briefing-prompt-manual`
   Do: Build the briefing-specific LLM prompt (via the persona builder) and add a manual "Melissa, brief me" voice/UI trigger for testing/on-demand use.
   Dependencies: T8.1, T3.6.
   Test: triggering manually across different days produces briefings that reference real, current data and don't read as templated.
   Commit: `feat: add daily briefing prompt with manual trigger`
 
-- [ ] **T8.3 — First-activity-of-day scheduler**
+- [x] **T8.3 — First-activity-of-day scheduler**
   Branch: `stage-8/t8.3-first-activity-scheduler`
   Do: Implement `core/scheduler.py`: trigger the briefing automatically on the first detected activity of a new day (not a wall-clock timer, so it isn't missed if the machine was off/asleep).
   Dependencies: T8.2, T6.9.
@@ -460,35 +460,35 @@ Follow this procedure at the start of every work session, with no exceptions:
 ## Stage 9 — Coding Companion (first plugin)
 *Goal: project-aware coding help, per `context.md` §11.*
 
-- [ ] **T9.1 — Plugin base interface**
+- [x] **T9.1 — Plugin base interface**
   Branch: `stage-9/t9.1-plugin-base`
   Do: Implement `plugins/base.py`: the plugin contract (contributes context facts, optional LLM tools, optional proactive triggers with their own cooldowns), plus a plugin loader in `core/`.
   Dependencies: T5.5, T7.2.
   Test: unit test loads a trivial dummy plugin and confirms it's discoverable/registered correctly.
   Commit: `feat: add plugin base interface and loader`
 
-- [ ] **T9.2 — VS Code project detection**
+- [x] **T9.2 — VS Code project detection**
   Branch: `stage-9/t9.2-project-detection`
   Do: Implement project detection inside `plugins/coding_companion/` using the Stage 6 sensors (active window/process) to identify the current VS Code project/folder.
   Dependencies: T9.1, T6.9.
   Test: manual test across a few different open projects confirms correct project name/path is reported.
   Commit: `feat: add coding companion project detection`
 
-- [ ] **T9.3 — Debugging/explain tool**
+- [x] **T9.3 — Debugging/explain tool**
   Branch: `stage-9/t9.3-debug-explain-tool`
   Do: Add a tool the LLM can call (or a direct voice command) to explain a pasted/captured error or a given file, using the active project context from T9.2.
   Dependencies: T9.2, T3.7.
   Test: manual test with a real bug in a real project — response correctly references the actual project/error.
   Commit: `feat: add coding companion debug/explain tool`
 
-- [ ] **T9.4 — Scoped documentation search tool**
+- [x] **T9.4 — Scoped documentation search tool**
   Branch: `stage-9/t9.4-doc-search-tool`
   Do: Add a narrowly-scoped "search documentation" tool exposed to the LLM (not a general web browser — keep scope tight to doc lookups for this stage).
   Dependencies: T9.1, T3.7.
   Test: manual test — a documentation question during a coding session returns a relevant, correctly scoped result.
   Commit: `feat: add scoped documentation search tool`
 
-- [ ] **T9.5 — Focus-mode gating (shared with nudges)**
+- [x] **T9.5 — Focus-mode gating (shared with nudges)**
   Branch: `stage-9/t9.5-focus-mode-gating`
   Do: Implement a focus-mode signal (sustained typing activity + no idle gaps) as a shared piece of the Context Snapshot, and gate *both* the coding plugin's proactive suggestions and the Stage 7 nudge decision loop behind it — implement once, reference from both, per `context.md` §11.
   Dependencies: T9.2, T7.2, T6.5.
